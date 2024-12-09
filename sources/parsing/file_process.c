@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:52:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/06 14:59:57 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/09 10:00:52 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ t_file	*file_process(int fd)
 		// 	return (not_enough_elements());
 		line = get_next_line(fd);
 	}
-	printf("no: %s\nso: %s\nwe: %s\nea: %s\nF: %s\nC: %s\n", file->path_north, file->path_south, file->path_west, file->path_east, file->rgb_sky, file->rgb_ground);
+	printf("no: %s\nso: %s\nwe: %s\nea: %s\nF: %s\nC: %s\n", file->path_north, file->path_south,
+			file->path_west, file->path_east, file->rgb_ground, file->rgb_sky);
 	if (!file->map)
 		return (NULL);
 	return (file);
