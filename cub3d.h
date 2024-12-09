@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2024/12/06 14:56:43 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/09 10:22:22 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,15 @@ typedef struct s_graphics
 
 typedef struct s_file
 {
-	char	**map;
-	int		player_start_posX;
-	int		player_start_posY;
-	char	*path_north;
-	char	*path_south;
-	char	*path_east;
-	char	*path_west;
-	char	*rgb_ground;
-	char	*rgb_sky;
+	const char	**map;
+	const int	player_start_posX;
+	const int	player_start_posY;
+	const char	*path_north;
+	const char	*path_south;
+	const char	*path_east;
+	const char	*path_west;
+	const char	*rgb_ground;
+	const char	*rgb_sky;
 }	t_file;
 
 typedef struct player
@@ -60,9 +60,8 @@ typedef struct player
 /*
  * PARSING
  */
-char	*get_value(char *line, size_t start);
-t_file	*file_process(int fd);
-void	get_rgb(t_file *file, char *line, char *key /*, int *flag*/);
+const char	*get_value(char *line, size_t start);
+t_file		*file_process(int fd);
 
 /*
  * ERRORS

@@ -6,16 +6,16 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 12:09:30 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/06 14:57:29 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/09 10:22:47 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-char	*get_value(char *line, size_t start)
+const char	*get_value(char *line, size_t start)
 {
-	char	*path;
-	int		end;
+	const char	*path;
+	int			end;
 
 	while (line[start] && !is_whitespace(line[start]))
 		start++;
