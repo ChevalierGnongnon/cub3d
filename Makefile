@@ -1,0 +1,41 @@
+NAME = cub3d
+CC = cc
+CFLAGS = -I. -Wall -Wextra -Werror -g3
+OFLAGS = -I. -Wall -Wextra -Werror -g3
+
+# make re && clear && ./cub3d
+
+FILES = core/main \
+	parsing/error_parsing \
+	parsing/get_map \
+	parsing/get_value \
+	parsing/file_process \
+	utils/char \
+	utils/strings
+
+SOURCES = $(foreach f, $(FILES), sources/$(f).c)
+OBJECTS = $(foreach f, $(FILES), objects/$(f).o)
+LIBFT = libft/libft.a
+
+$(NAME): $(OBJECTS) $(LIBFT)
+	$(CC) $(CFLAGS) -o $@ $^ MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm
+
+objects/%.o: sources/%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(OFLAGS) -c $< -o $@
+
+$(LIBFT) :
+	$(MAKE) -C libft
+
+clean:
+	rm -rf objects
+	$(MAKE) -C libft fclean
+
+fclean:
+	rm -rf $(NAME) $(LIBFT) objects
+
+re: fclean all
+
+all: $(NAME)
+
+.PHONY: all clean fclean re
