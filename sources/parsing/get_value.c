@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 12:09:30 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/09 10:46:26 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/09 12:23:04 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@ static int	check_line(char *line, int key)
 	return (1);
 }
 
-const char	*get_value(char *line, size_t start)
+const char	*get_value(char *line, size_t start, int *count)
 {
 	const char	*path;
 	int			end;
 
+	(*count)++;
 	while (line[start] && !is_whitespace(line[start]))
 		start++;
 	while (line[start] && is_whitespace(line[start]))
