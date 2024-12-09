@@ -11,6 +11,7 @@ FILES = core/main \
 	parsing/get_value \
 	parsing/file_process \
 	utils/char \
+	utils/file_check \
 	utils/strings
 
 SOURCES = $(foreach f, $(FILES), sources/$(f).c)

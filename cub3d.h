@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2024/12/09 12:12:56 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/09 12:48:38 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,11 @@ int		is_whitespace(char c);
  * STRING UTILS
  */
 int		ft_strcmp(const char *s1, const char *s2);
+
+/*
+ * FILE UTILS
+ */
+int		file_check_textures(char *path);
+int		file_check_rgb(char *path);
 
 #endif

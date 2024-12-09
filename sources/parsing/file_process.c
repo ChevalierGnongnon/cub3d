@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:52:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/09 12:28:35 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/09 14:17:31 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	set_img_paths(t_file *file, char *line, int *flag)
 	else if (!ft_strcmp("EA", key))
 		file->path_east = get_value(line, i, &cnt);
 	if (cnt == 6)
-		(*flag)= 1;
+		(*flag) = 1;
 	free(key);
 }
 
@@ -84,11 +84,12 @@ t_file	*file_process(int fd)
 			set_img_paths(file, line, &flag);
 		else if ((line && !find_key(line) && !flag))
 			return (file_elements_not_valid());
-		else if (flag && line)
-			file->map = map_copy(fd);
+		// else if (flag && line)
+		// 	file->map = map_copy(fd);
 		line = get_next_line(fd);
 	}
 	if (!file->map)
 		return (NULL);
+	
 	return (file);
 }
