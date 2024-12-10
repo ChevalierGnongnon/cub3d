@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2024/12/09 12:48:38 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/10 09:42:00 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,20 @@
 # include <errno.h>
 # include <sys/stat.h>
 # include <sys/time.h>
-# include <X11/keysym.h>
-# include <X11/X.h>
-# include "./MLX42/include/MLX42/MLX42.h"
+// # include <X11/keysym.h>
+// # include <X11/X.h>
+// # include "./MLX42/include/MLX42/MLX42.h"
 # include "libft/sources/libft.h"
 
-typedef struct s_graphics
-{
-	mlx_image_t	*wall_south;
-	mlx_image_t	*wall_north;
-	mlx_image_t *wall_west;
-	mlx_image_t *wall_east;
-	mlx_image_t *ground;
-	mlx_image_t	*sky;
-}	t_img;
+// typedef struct s_graphics
+// {
+// 	mlx_image_t	*wall_south;
+// 	mlx_image_t	*wall_north;
+// 	mlx_image_t *wall_west;
+// 	mlx_image_t *wall_east;
+// 	mlx_image_t *ground;
+// 	mlx_image_t	*sky;
+// }	t_img;
 
 typedef struct s_file
 {

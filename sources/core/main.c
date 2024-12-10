@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:54:00 by lahlsweh          #+#    #+#             */
-/*   Updated: 2024/12/09 14:21:40 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/10 09:53:41 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ int	check_extension(char *map_path)
 
 void	launch(char *path)
 {
-	void	*mlx;
+	// void	*mlx;
 	int		fd;
 
 	if (file_check_textures(path) && file_check_rgb(path))
 	{	
 		fd = open(path, O_RDONLY);
 		if (fd == -1)
-			ft_putstr_fd("error: map not existing", 2);
+			ft_putstr_fd("error: map not existing\n", 2);
 		else
 		{
 			file_process(fd);
 			close(fd);
-			mlx = NULL;
+			// mlx = NULL;
 		}
 	}
 	else
@@ -47,15 +47,15 @@ void	launch(char *path)
 int	main(int argc, char **argv)
 {
 	if (argc == 1)
-		return (ft_putstr_fd("Error : map path needed", 2), 0);
+		return (ft_putstr_fd("Error : map path needed\n", 2), 0);
 	else if (argc > 2)
-		return (ft_putstr_fd("Error : too many arguments", 2), 0);
+		return (ft_putstr_fd("Error : too many arguments\n", 2), 0);
 	else
 	{
 		if (check_extension(argv[1]))
 			launch(argv[1]);
 		else
-			ft_putstr_fd("error : wrong extension", 2);
+			ft_putstr_fd("error : wrong extension\n", 2);
 	}
 	return (0);
 }
