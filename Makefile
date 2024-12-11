@@ -6,11 +6,13 @@ OFLAGS = -I. -Wall -Wextra -Werror -g3
 # make re && clear && ./cub3d
 
 FILES = core/main \
+	core/display \
 	parsing/error_parsing \
 	parsing/get_map \
 	parsing/get_value \
 	parsing/file_process \
 	utils/char \
+	utils/map \
 	utils/file_check \
 	utils/strings
 

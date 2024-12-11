@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:41:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/09 14:24:26 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/11 10:06:24 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static int	find_key_rgb(char *line)
 	key = ft_substr(line, i, 2);
 	if (!key)
 		return (0);
-	printf("%s\n", key);
 	if ((!ft_strcmp("F", key) || !ft_strcmp("C", key))
 		&& (line[i + 1] || is_whitespace(line[i + 1])))
 		return (free(key), 1);

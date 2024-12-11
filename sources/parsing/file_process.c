@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:52:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/09 14:17:31 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/11 11:16:11 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ t_file	*file_process(int fd)
 			set_img_paths(file, line, &flag);
 		else if ((line && !find_key(line) && !flag))
 			return (file_elements_not_valid());
-		// else if (flag && line)
-		// 	file->map = map_copy(fd);
+		else if (flag && line)
+			file->map = map_recup(fd);
 		line = get_next_line(fd);
 	}
 	if (!file->map)

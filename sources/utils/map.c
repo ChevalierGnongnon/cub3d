@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strings.c                                          :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 13:15:44 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/11 11:14:56 by chhoflac         ###   ########.fr       */
+/*   Created: 2024/12/11 11:15:05 by chhoflac          #+#    #+#             */
+/*   Updated: 2024/12/11 11:15:16 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-int	ft_strcmp(const char *s1, const char *s2)
+const char *dup_line(const char *line)
 {
-	int	i;
-
+	char	*new;
+	int		i;
+	
 	i = 0;
-	while (s1[i] != '\0' || s2[i] != '\0')
+	new = malloc(ft_strlen(line));
+	if (!new)
+		return (NULL);
+	while (line[i] && line[i] != '\n')
 	{
-		if (s1[i] != s2[i])
-			break ;
+		new[i] = line[i];
 		i++;
 	}
-	return (s1[i] - s2[i]);
+	new[i] = '\0';
+	return (new);
 }
-

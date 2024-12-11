@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strings.c                                          :+:      :+:    :+:   */
+/*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 13:15:44 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/11 11:14:56 by chhoflac         ###   ########.fr       */
+/*   Created: 2024/12/11 11:24:35 by chhoflac          #+#    #+#             */
+/*   Updated: 2024/12/11 11:32:36 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-int	ft_strcmp(const char *s1, const char *s2)
+void	display_process(t_file *file)
 {
-	int	i;
-
+	int i;
+	
 	i = 0;
-	while (s1[i] != '\0' || s2[i] != '\0')
+	printf("----Textures----\n");
+	printf("East: %s\n", file->path_east);
+	printf("North: %s\n", file->path_north);
+	printf("South: %s\n", file->path_south);
+	printf("West: %s\n", file->path_west);
+	printf("----RGB----\n");
+	printf("Ground: %s\n", file->rgb_ground);
+	printf("Sky: %s\n", file->rgb_sky);
+	printf("----Map----\n");
+	while (file->map[i])
 	{
-		if (s1[i] != s2[i])
-			break ;
+		printf("%s\n", file->map[i]);
 		i++;
 	}
-	return (s1[i] - s2[i]);
 }
-
