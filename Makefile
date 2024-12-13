@@ -7,6 +7,7 @@ OFLAGS = -I. -Wall -Wextra -Werror -g3
 
 FILES = core/main \
 	core/display \
+	core/free \
 	parsing/error_parsing \
 	parsing/get_map \
 	parsing/get_value \

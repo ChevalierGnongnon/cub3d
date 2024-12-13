@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2024/12/13 13:49:31 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/13 17:00:57 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,11 @@ typedef struct player
 const char	*get_value(char *line, size_t start, int *count);
 t_file		*file_process(int fd);
 const char	**map_recup(int fd);
+
+/*
+ * FREE
+ */
+void		*free_map(const char **map);
 
 /*
  * ERRORS

@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:15:37 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/13 14:22:58 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/13 15:21:20 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ static const char	**map_edit(const char **map, char *line)
 	{
 		new_map[i] = dup_line(map[i]);
 		if (!new_map)
-			return (NULL);
+			return (free_map(map));
 		i++;
 	}
 	new_map[i] = dup_line(line);
 	new_map[i + 1] = NULL;
+	free_map(map);
 	return (new_map);
 }
 
