@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:52:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/11 11:16:11 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/13 14:00:55 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,19 @@ void	set_img_paths(t_file *file, char *line, int *flag)
 	free(key);
 }
 
+void	file_preset(t_file *file)
+{
+	file->map = NULL;
+	file->path_east = NULL;
+	file->path_north = NULL;
+	file->path_south = NULL;
+	file->path_west = NULL;
+	file->player_start_posX = 0;
+	file->player_start_posX = 0;
+	file->rgb_ground = NULL;
+	file->rgb_sky = NULL;
+}
+
 t_file	*file_process(int fd)
 {
 	char	*line;
@@ -74,6 +87,7 @@ t_file	*file_process(int fd)
 	file = malloc(sizeof(t_file));
 	if (!file)
 		return (NULL);
+	file_preset(file);
 	line = get_next_line(fd);
 	if (line && find_key(line))
 		set_img_paths(file, line, &flag);

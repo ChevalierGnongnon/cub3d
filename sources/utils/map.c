@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:15:05 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/11 11:15:16 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/13 12:27:18 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ const char *dup_line(const char *line)
 	int		i;
 	
 	i = 0;
+	new = NULL;
 	new = malloc(ft_strlen(line));
 	if (!new)
 		return (NULL);

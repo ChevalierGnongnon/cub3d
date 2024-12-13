@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2024/12/11 11:33:21 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/13 13:49:31 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@
 typedef struct s_file
 {
 	const char	**map;
-	const int	player_start_posX;
-	const int	player_start_posY;
+	int			player_start_posX;
+	int			player_start_posY;
 	const char	*path_north;
 	const char	*path_south;
 	const char	*path_east;

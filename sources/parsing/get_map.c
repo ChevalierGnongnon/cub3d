@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:15:37 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/12 13:03:02 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/13 14:13:59 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int	map_size(const char **map)
 	int	i;
 
 	i = 0;
+	if (!map || !map[0])
+		return (0);
 	while (map[i] != NULL)
 		i++;
 	return (i);
@@ -47,8 +49,8 @@ const char	**map_recup(int fd)
 {
 	const char	**map;
 	char		*line;
-
-	map = ft_calloc(2, 1);
+	
+	map = ft_calloc(1, 2);
 	if (!map)
 		return (NULL);
 	line = get_next_line(fd);
