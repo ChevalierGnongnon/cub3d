@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 15:18:35 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/13 17:00:24 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/14 14:41:26 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,23 @@ void	*free_map(const char **map)
 		i++;
 	}
 	free((void *) map);
+	return (NULL);
+}
+
+void	*free_file(t_file *file)
+{
+	if (file->map)
+		free_map(file->map);
+	if (file->path_east)
+		free((void *) file->path_east);
+	if (file->path_north)
+		free((void *) file->path_north);
+	if (file->path_west)
+		free((void *) file->path_west);
+	if (file->rgb_ground)
+		free((void *) file->rgb_ground);
+	if (file->rgb_sky)
+		free((void *) file->rgb_sky);
+	free(file);
 	return (NULL);
 }

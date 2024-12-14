@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2024/12/13 17:00:57 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/14 14:39:11 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ const char	**map_recup(int fd);
  * FREE
  */
 void		*free_map(const char **map);
+void		*free_file(t_file *file);
 
 /*
  * ERRORS
