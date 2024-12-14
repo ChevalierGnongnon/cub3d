@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:41:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/11 10:06:24 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/14 12:53:21 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,11 @@ int	file_check_textures(char *path)
 	{
 		if (line && find_key_texture(line))
 			cnt++;
+		free(line);
 		line = get_next_line(fd);
 	}
 	close(fd);
+	free(line);
 	if (cnt > 4)
 		return (0);
 	return (1);
@@ -83,8 +85,10 @@ int	file_check_rgb(char *path)
 	{
 		if (line && find_key_rgb(line))
 			cnt++;
+		free(line);
 		line = get_next_line(fd);
 	}
+	free(line);
 	close(fd);
 	if (cnt > 1)
 		return (0);
