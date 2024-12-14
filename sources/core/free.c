@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 15:18:35 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/14 14:41:26 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/14 15:36:29 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	*free_file(t_file *file)
 		free((void *) file->path_east);
 	if (file->path_north)
 		free((void *) file->path_north);
+	if (file->path_south)
+		free((void *) file->path_south);
 	if (file->path_west)
 		free((void *) file->path_west);
 	if (file->rgb_ground)

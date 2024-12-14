@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:52:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/14 15:32:01 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/14 15:46:29 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,14 @@ void	file_preset(t_file *file)
 	file->rgb_sky = NULL;
 }
 
+void	*file_not_valid(t_file *file, char *line)
+{
+	free(line);
+	free_file(file);
+	file_elements_not_valid();
+	return (NULL);
+}
+
 t_file	*file_process(int fd)
 {
 	char	*line;
@@ -99,7 +107,7 @@ t_file	*file_process(int fd)
 		if (line && find_key(line))
 			set_img_paths(file, line, &flag);
 		else if ((line && !find_key(line) && !flag))
-			return (file_elements_not_valid());
+			return (file_not_valid(file, line));
 		else if (flag && line)
 			file->map = map_recup(fd);
 		free(line);
