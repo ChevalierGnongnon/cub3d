@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:52:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/14 12:46:21 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/14 15:32:01 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	find_key(char *line)
 		|| !ft_strcmp("WE", key) || !ft_strcmp("EA", key))
 		&& (line[i + 2] || is_whitespace(line[i + 2])))
 		return (free(key), 1);
+	free(key);
 	key = ft_substr(line, i, 1);
 	if ((!ft_strcmp("F", key) || !ft_strcmp("C", key))
 		&& (line[i + 1] || is_whitespace(line[i + 1])))
@@ -104,6 +105,7 @@ t_file	*file_process(int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
+	free(line);
 	if (!file->map)
 		return (NULL);
 	
