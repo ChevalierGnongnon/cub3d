@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:15:05 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/14 17:08:26 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/15 15:28:25 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ const char *dup_line(const char *line)
 	int		i;
 	
 	i = 0;
-	new = malloc(ft_strlen(line) + 1);
+	new = ft_calloc(sizeof(char), ft_strlen(line) + 1);
 	if (!new)
 		return (NULL);
 	while (line[i] && line[i] != '\n')
@@ -28,4 +28,36 @@ const char *dup_line(const char *line)
 	}
 	new[i] = '\0';
 	return (new);
+}
+
+int	map_size(const char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i] != NULL)
+		i++;
+	return (i);
+}
+
+char	**map_copy(const char **map)
+{
+	char	**copy;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	copy = malloc(map_size(map) + 1);
+	if (!copy)
+		return (NULL);
+	while (map[i])
+	{
+		copy[i] = ft_strdup(map[i]);
+		if (!copy[i])
+			return (free_map((const char **) copy));
+		i++;
+	}
+	copy[i] = NULL;
+	return (copy);
 }

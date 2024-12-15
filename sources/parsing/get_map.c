@@ -6,21 +6,11 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:15:37 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/14 17:04:00 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/15 15:25:23 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
-
-static int	map_size(const char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i] != NULL)
-		i++;
-	return (i);
-}
 
 static const char	**map_edit(const char **map, char *line)
 {
@@ -49,7 +39,7 @@ const char	**map_recup(int fd)
 	const char	**map;
 	char		*line;
 	
-	map = ft_calloc(1, 2);
+	map = ft_calloc(2, sizeof(char *));
 	if (!map)
 		return (NULL);
 	line = get_next_line(fd);
