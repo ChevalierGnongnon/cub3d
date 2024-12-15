@@ -6,15 +6,13 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:15:55 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/15 14:52:55 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/15 15:47:17 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-
-
-int	charschecker(const char **map)
+static int	charschecker(const char **map)
 {
 	int	startflag;
 	int	i;
@@ -27,15 +25,19 @@ int	charschecker(const char **map)
 		j = 0;
 		while (map[i][j])
 		{
-			if (is_forbidden(map[i][j]))
-				return (1);
-			if (is_player_orientation(map[i][j]) && startflag)
-				return (0);
+			if (is_forbidden(map[i][j])
+				|| (is_player_orientation(map[i][j]) && startflag))
+				return (multiple_starting_pos());
 			if (is_player_orientation(map[i][j]) && !startflag)
 				startflag = 1;
 			j++;
 		}
 		i++;
 	}
-	return (1);
+	return (0);
+}
+
+int mapchecker(const char **map)
+{
+	
 }

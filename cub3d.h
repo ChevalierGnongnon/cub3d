@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2024/12/15 14:15:34 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/15 15:44:43 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,11 @@ void		*free_map(const char **map);
 void		*free_file(t_file *file);
 
 /*
- * ERRORS
+ * PARSING ERRORS
  */
 void		*file_elements_not_valid(void);
 void		*not_enough_elements(void);
+void		*multiple_starting_pos(void);
 
 /*
  * CHAR UTILS
