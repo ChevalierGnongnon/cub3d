@@ -6,13 +6,9 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:27:27 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/15 14:42:13 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/17 13:29:33 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-void	flood_fill(char **map_copy, int x_start, int y_start)
-{
-	
-}
