@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 12:09:30 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/17 17:20:16 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/17 17:27:43 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static const char	*get_rgb(char *line, int start, int end)
 
 const char	*get_value(char *line, char *key, size_t start, int *count)
 {
-	int			end;
+	int	end;
 
 	(*count)++;
 	while (line[start] && !is_whitespace(line[start]))
@@ -68,11 +68,12 @@ const char	*get_value(char *line, char *key, size_t start, int *count)
 	if (start == ft_strlen(line))
 		return (NULL);
 	end = start;
+	if (!ft_strcmp(key, "C ") || !ft_strcmp(key, "F "))
+		return (get_rgb(line, start, end));
 	if (!check_line(line, start))
 		return (NULL);
-	if (ft_strcmp(key, "C") || ft_strcmp(key, "F"))
+	if (ft_strcmp(key, "C ") || ft_strcmp(key, "F "))
 		return (get_wall_texture(line, start, end));
-	else
-		return (get_rgb(line, start, end));
+	
 	return (NULL);
 }
