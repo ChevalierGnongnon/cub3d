@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2024/12/15 15:44:43 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/17 15:37:49 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct player
 /*
  * PARSING
  */
-const char	*get_value(char *line, size_t start, int *count);
+const char	*get_value(char *line, char *key, size_t start, int *count);
 t_file		*file_process(int fd);
 const char	**map_recup(int fd);
 

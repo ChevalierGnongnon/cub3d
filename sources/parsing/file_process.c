@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:52:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/15 13:57:29 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/17 15:44:24 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,17 @@ void	set_img_paths(t_file *file, char *line, int *flag)
 	if (!key)
 		return ;
 	if (key[0] == 'F' && is_whitespace(key[1]))
-		file->rgb_ground = get_value(line, i, &cnt);
+		file->rgb_ground = get_value(line, key, i, &cnt);
 	if (key[0] == 'C' && is_whitespace(key[1]))
-		file->rgb_sky = get_value(line, i, &cnt);
+		file->rgb_sky = get_value(line, key, i, &cnt);
 	if (!ft_strcmp("NO", key))
-		file->path_north = get_value(line, i, &cnt);
+		file->path_north = get_value(line, key, i, &cnt);
 	else if (!ft_strcmp("SO", key))
-		file->path_south = get_value(line, i, &cnt);
+		file->path_south = get_value(line, key, i, &cnt);
 	else if (!ft_strcmp("WE", key))
-		file->path_west = get_value(line, i, &cnt);
+		file->path_west = get_value(line, key, i, &cnt);
 	else if (!ft_strcmp("EA", key))
-		file->path_east = get_value(line, i, &cnt);
+		file->path_east = get_value(line, key, i, &cnt);
 	if (cnt == 6)
 		(*flag) = 1;
 	free(key);

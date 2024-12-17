@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 12:09:30 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/09 12:23:04 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/17 15:36:45 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	check_line(char *line, int key)
 	return (1);
 }
 
-const char	*get_value(char *line, size_t start, int *count)
+const char	*get_value(char *line, char *key, size_t start, int *count)
 {
 	const char	*path;
 	int			end;
@@ -43,9 +43,19 @@ const char	*get_value(char *line, size_t start, int *count)
 	if (start == ft_strlen(line))
 		return (NULL);
 	end = start;
-	if (check_line(line, start))
+	if ((ft_strcmp(key, "C") || ft_strcmp(key, "F"))
+		&& check_line(line, start))
 	{
 		while (line[end] && !is_whitespace(line[end]))
+			end++;
+		path = ft_substr(line, start, end - start);
+		if (!path)
+			return (NULL);
+		return (path);
+	}
+	else
+	{
+		while (line[end])
 			end++;
 		path = ft_substr(line, start, end - start);
 		if (!path)
