@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:54:00 by lahlsweh          #+#    #+#             */
-/*   Updated: 2024/12/17 17:08:32 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/18 13:31:07 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,12 @@ void	launch(char *path)
 		else
 		{
 			process = file_process(fd);
-			display_process(process);
 			close(fd);
 			if (process)
+			{
 				free_file(process);
+				display_process(process);
+			}
 		}
 	}
 	else
