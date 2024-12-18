@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:15:55 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/15 15:47:17 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/18 12:24:03 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,7 @@ static int	charschecker(const char **map)
 
 int mapchecker(const char **map)
 {
+	if (!charschecker(map))
+		return (0);
 	
 }
