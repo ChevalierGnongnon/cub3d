@@ -6,17 +6,17 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:15:05 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/15 15:28:25 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/18 10:16:40 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-const char *dup_line(const char *line)
+const char	*dup_line(const char *line)
 {
 	char	*new;
 	int		i;
-	
+
 	i = 0;
 	new = ft_calloc(sizeof(char), ft_strlen(line) + 1);
 	if (!new)

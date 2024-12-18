@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 13:15:44 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/11 11:14:56 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/18 10:14:20 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,3 @@ int	ft_strcmp(const char *s1, const char *s2)
 	}
 	return (s1[i] - s2[i]);
 }
-

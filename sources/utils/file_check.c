@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:41:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/14 12:53:21 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/18 10:17:11 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	find_key_texture(char *line)
 	if (!key)
 		return (0);
 	if ((!ft_strcmp("NO", key) || !ft_strcmp("SO", key)
-		|| !ft_strcmp("WE", key) || !ft_strcmp("EA", key))
+			|| !ft_strcmp("WE", key) || !ft_strcmp("EA", key))
 		&& (line[i + 2] || is_whitespace(line[i + 2])))
 		return (free(key), 1);
 	free(key);
@@ -54,7 +54,7 @@ int	file_check_textures(char *path)
 	int		fd;
 	int		cnt;
 	char	*line;
-	
+
 	fd = open(path, O_RDONLY);
 	cnt = 0;
 	line = get_next_line(fd);
@@ -77,7 +77,7 @@ int	file_check_rgb(char *path)
 	int		fd;
 	int		cnt;
 	char	*line;
-	
+
 	fd = open(path, O_RDONLY);
 	cnt = 0;
 	line = get_next_line(fd);
