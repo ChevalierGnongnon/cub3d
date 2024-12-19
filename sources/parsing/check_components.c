@@ -6,13 +6,13 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:23:28 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/19 11:10:34 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/19 11:33:41 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-int	file_check(t_file *file)
+int	file_check_values(t_file *file)
 {
 	if (!file)
 		return (ft_putstr_fd("Error:\n Memory allocation went wrong.\n", 2), 0);

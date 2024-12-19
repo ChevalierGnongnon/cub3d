@@ -8,8 +8,8 @@ OFLAGS = -I. -Wall -Wextra -Werror -g3
 FILES = core/main \
 	core/display \
 	core/free \
+	parsing/check_components \
 	parsing/error_parsing \
-	parsing/file_check \
 	parsing/get_map \
 	parsing/get_value \
 	parsing/file_process \
