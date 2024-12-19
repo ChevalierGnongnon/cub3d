@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:24:35 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/11 11:32:36 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/19 11:26:06 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	display_process(t_file *file)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	printf("----Textures----\n");
 	printf("East: %s\n", file->path_east);

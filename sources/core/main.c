@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:54:00 by lahlsweh          #+#    #+#             */
-/*   Updated: 2024/12/19 11:10:00 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/19 11:26:52 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,11 @@ int	check_extension(char *map_path)
 
 void	launch(char *path)
 {
-	// void	*mlx;
 	int		fd;
 	t_file	*process;
-	
+
 	if (file_check_textures(path) && file_check_rgb(path))
-	{	
+	{
 		fd = open(path, O_RDONLY);
 		if (fd == -1)
 			ft_putstr_fd("error: map not existing\n", 2);

@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 15:18:35 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/15 14:03:58 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/19 11:27:38 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@ void	*free_map(const char **map)
 	int	i;
 
 	i = 0;
-	
 	if (map == NULL)
 		return (NULL);
 	if (map[i] == NULL)
-		return(free(map), NULL);
+		return (free(map), NULL);
 	while (map[i])
 	{
 		free((void *) map[i]);

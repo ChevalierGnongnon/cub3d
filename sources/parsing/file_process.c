@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:52:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/19 11:20:38 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/19 11:22:26 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,9 @@ t_file	*fileset(t_file *file, int *flag, int fd)
 
 t_file	*file_process(int fd)
 {
+	t_file	*file;
 	char	*line;
 	int		flag;
-	t_file	*file;
 
 	flag = 0;
 	file = NULL;
