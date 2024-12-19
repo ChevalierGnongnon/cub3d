@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2024/12/19 13:06:21 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:41:31 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@
 // 	mlx_image_t	*sky;
 // }	t_img;
 
+typedef struct s_pos
+{
+	int	x;
+	int y;
+}	t_pos;
+
 typedef struct s_file
 {
 	const char	**map;
@@ -66,7 +72,8 @@ const char	**map_recup(int fd);
 char		**map_copy(const char **map);
 int			file_check_values(t_file *file);
 int			rgb_check(const char *rgb);
-void		flood_fill(t_file *file);
+void		flood_fill(t_pos pos, char **map);
+char		**flood_fill_process(t_file *file);
 
 
 /*

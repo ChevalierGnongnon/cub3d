@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:27:27 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/19 13:59:00 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:46:46 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,22 +54,50 @@ static void	get_start_position(char **copy, t_file *file)
 	}
 }
 
-void	flood_fill(t_file *file)
+int is_accessible(char element)
 {
+	if (element == 1 || element == 2)
+		return (0);
+	return (1);
+}
+
+void	flood_fill(t_pos pos, char **map)
+{
+	if (map[pos.x] && map[pos.x][pos.y]
+		&& is_accessible(map[pos.x][pos.y]))
+	{
+		map[pos.x][pos.y] = '2';
+		pos.x++;
+		flood_fill(pos, map);
+		pos.x -= 2;
+		flood_fill(pos, map);
+		pos.x++;
+		pos.y++;
+		flood_fill(pos, map);
+		pos.y -= 2;
+		flood_fill(pos, map);
+	}
+	else
+	{
+		pos.x++;
+		pos.y++;
+	}
+}
+
+char	**flood_fill_process(t_file *file)
+{
+	t_pos	pos;
 	char	**copy;
 	int		i;
 
 	i = 0;
 	copy = map_copy(file->map);
 	if (!copy)
-		return ;
-	get_start_position(copy,file);
-	printf("\n");
-	while (copy[i])
-	{
-		printf("%s\n", file->map[i]);
-		i++;
-	}
-	printf("X = %d\nY = %d\n", file->player_start_posX, file->player_start_posY);
+		return (NULL);
+	get_start_position(copy, file);
+	pos.x = file->player_start_posX;
+	pos.y = file->player_start_posY;
+	flood_fill(pos, copy);
 	free_map((const char **) copy);
+	return (copy);
 }
