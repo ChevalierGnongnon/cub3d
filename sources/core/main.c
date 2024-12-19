@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:54:00 by lahlsweh          #+#    #+#             */
-/*   Updated: 2024/12/19 11:26:52 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/19 13:30:06 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	launch(char *path)
 			if (process)
 			{
 				display_process(process);
+				flood_fill(process);
 				free_file(process);
 			}
 			close(fd);

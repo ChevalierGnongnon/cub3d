@@ -13,6 +13,7 @@ FILES = core/main \
 	parsing/get_map \
 	parsing/get_value \
 	parsing/file_process \
+	parsing/flood_fill \
 	parsing/rgb_check \
 	utils/char \
 	utils/map \
