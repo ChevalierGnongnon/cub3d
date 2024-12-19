@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:52:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/18 12:17:40 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/19 11:20:38 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,21 @@ void	*file_not_valid(t_file *file, char *line)
 	return (NULL);
 }
 
+t_file	*fileset(t_file *file, int *flag, int fd)
+{
+	char	*line;
+	
+	file = ft_calloc(1, sizeof(t_file));
+	if (!file)
+		return (NULL);
+	file_preset(file);
+	line = get_next_line(fd);
+	if (line && find_key(line))
+		set_img_paths(file, line, flag);
+	free(line);
+	return (file);
+}
+
 t_file	*file_process(int fd)
 {
 	char	*line;
@@ -93,14 +108,10 @@ t_file	*file_process(int fd)
 	t_file	*file;
 
 	flag = 0;
-	file = ft_calloc(1, sizeof(t_file));
+	file = NULL;
+	file = fileset(file, &flag, fd);
 	if (!file)
 		return (NULL);
-	file_preset(file);
-	line = get_next_line(fd);
-	if (line && find_key(line))
-		set_img_paths(file, line, &flag);
-	free(line);
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -114,8 +125,6 @@ t_file	*file_process(int fd)
 		line = get_next_line(fd);
 	}
 	free(line);
-	if (!file->map)
-		return (free_file(file));
 	if (!file_check(file))
 		return (NULL);
 	return (file);

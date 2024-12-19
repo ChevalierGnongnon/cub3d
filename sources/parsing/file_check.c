@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:23:28 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/18 14:46:03 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/19 11:10:34 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ int	file_check(t_file *file)
 		return (ft_putstr_fd("Error:\n West texture is missing.\n", 2), 0);
 	if (!file->path_east)
 		return (ft_putstr_fd("Error:\n East texture is missing.\n", 2), 0);
-	if (!file->rgb_ground || !rgb_check(file->rgb_ground))
-		return (ft_putstr_fd
-			("Error:\n Ground rgb is missing or in the wrong shape.\n", 2), 0);
-	if (!file->rgb_sky || !rgb_check(file->rgb_sky))
-		return (ft_putstr_fd
-			("Error:\n Sky rgb is missing or in the wrong shape.\n", 2), 0);
+	// if (!file->rgb_ground || !rgb_check(file->rgb_ground))
+	// 	return (ft_putstr_fd
+	// 		("Error:\n Ground rgb is missing or in the wrong shape.\n", 2), 0);
+	// if (!file->rgb_sky || !rgb_check(file->rgb_sky))
+	// 	return (ft_putstr_fd
+	// 		("Error:\n Sky rgb is missing or in the wrong shape.\n", 2), 0);
 	return (1);
 }
