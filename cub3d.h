@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2024/12/19 14:41:31 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/20 12:21:53 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ const char	**map_recup(int fd);
 char		**map_copy(const char **map);
 int			file_check_values(t_file *file);
 int			rgb_check(const char *rgb);
-void		flood_fill(t_pos pos, char **map);
+int 		flood_fill(t_pos pos, char **map);
 char		**flood_fill_process(t_file *file);
 
 

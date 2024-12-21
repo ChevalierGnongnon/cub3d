@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:27:27 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/19 14:46:46 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/20 14:25:08 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ static void	get_start_position(char **copy, t_file *file)
 		{
 			if (is_player_orientation(copy[i][j]))
 			{
-				file->player_start_posX = j;
-				file->player_start_posY = i;
+				file->player_start_posX = i;
+				file->player_start_posY = j;
 			}
 			j++;
 		}
@@ -56,14 +56,24 @@ static void	get_start_position(char **copy, t_file *file)
 
 int is_accessible(char element)
 {
-	if (element == 1 || element == 2)
+	if (element == '1' || element == '2')
 		return (0);
 	return (1);
 }
 
-void	flood_fill(t_pos pos, char **map)
+int	flood_fill(t_pos pos, char **map)
 {
-	if (map[pos.x] && map[pos.x][pos.y]
+	static int cnt = 0;
+
+	cnt++;
+	if (is_accessible(map[pos.x][pos.y]) == -1)
+	{
+		printf("aaaaaaaaaa");
+		return (-1);
+	}
+	if (is_whitespace(map[pos.x][pos.y]))
+		return (-1);
+	else if (map[pos.x] && map[pos.x][pos.y]
 		&& is_accessible(map[pos.x][pos.y]))
 	{
 		map[pos.x][pos.y] = '2';
@@ -77,11 +87,7 @@ void	flood_fill(t_pos pos, char **map)
 		pos.y -= 2;
 		flood_fill(pos, map);
 	}
-	else
-	{
-		pos.x++;
-		pos.y++;
-	}
+	return (cnt);
 }
 
 char	**flood_fill_process(t_file *file)
@@ -97,7 +103,20 @@ char	**flood_fill_process(t_file *file)
 	get_start_position(copy, file);
 	pos.x = file->player_start_posX;
 	pos.y = file->player_start_posY;
-	flood_fill(pos, copy);
+	printf("X : %d, Y : %d\n", pos.x, pos.y);
+	int rep = flood_fill(pos, copy);
+	printf("%d\n", rep);
+	if (rep == -1)
+	{
+		ft_putstr_fd("Error:\n Map has holes", 2);
+		return (NULL);
+	}
+	printf("\n");
+	while (copy[i])
+	{
+		printf("%s\n", copy[i]);
+		i++;
+	}
 	free_map((const char **) copy);
 	return (copy);
 }
