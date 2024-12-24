@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:15:05 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/19 13:56:08 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/21 14:51:09 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ char	**map_copy(const char **map)
 {
 	char	**copy;
 	int		i;
-	int		j;
+	// int		j;
 
 	i = 0;
-	j = 0;
+	// j = 0;
 	copy = ft_calloc(sizeof(char *), map_size(map) + 1);
 	if (!copy)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:27:27 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/20 14:25:08 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/24 13:49:37 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ static void	get_start_position(char **copy, t_file *file)
 
 int is_accessible(char element)
 {
+	if (is_whitespace(element))
+		return (-1);
 	if (element == '1' || element == '2')
 		return (0);
 	return (1);
@@ -67,15 +69,11 @@ int	flood_fill(t_pos pos, char **map)
 
 	cnt++;
 	if (is_accessible(map[pos.x][pos.y]) == -1)
-	{
-		printf("aaaaaaaaaa");
 		return (-1);
-	}
-	if (is_whitespace(map[pos.x][pos.y]))
-		return (-1);
-	else if (map[pos.x] && map[pos.x][pos.y]
-		&& is_accessible(map[pos.x][pos.y]))
+	if (map[pos.x] && map[pos.x][pos.y]
+		&& is_accessible(map[pos.x][pos.y]) && !is_whitespace(map[pos.x][pos.y]))
 	{
+		
 		map[pos.x][pos.y] = '2';
 		pos.x++;
 		flood_fill(pos, map);
