@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:27:27 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/24 13:49:37 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/29 15:11:56 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,18 +62,18 @@ int is_accessible(char element)
 		return (0);
 	return (1);
 }
-
 int	flood_fill(t_pos pos, char **map)
 {
-	static int cnt = 0;
+	static int	cnt = 0;
+	int 		check;
 
 	cnt++;
-	if (is_accessible(map[pos.x][pos.y]) == -1)
+	check = is_accessible(map[pos.x][pos.y]);
+	if (check == -1)
 		return (-1);
-	if (map[pos.x] && map[pos.x][pos.y]
-		&& is_accessible(map[pos.x][pos.y]) && !is_whitespace(map[pos.x][pos.y]))
+	if (check != -1 && map[pos.x] && map[pos.x][pos.y]
+		&& is_accessible(map[pos.x][pos.y]))
 	{
-		
 		map[pos.x][pos.y] = '2';
 		pos.x++;
 		flood_fill(pos, map);
@@ -85,7 +85,7 @@ int	flood_fill(t_pos pos, char **map)
 		pos.y -= 2;
 		flood_fill(pos, map);
 	}
-	return (cnt);
+	return (check);
 }
 
 char	**flood_fill_process(t_file *file)
@@ -93,7 +93,8 @@ char	**flood_fill_process(t_file *file)
 	t_pos	pos;
 	char	**copy;
 	int		i;
-
+	int 	rep;
+	
 	i = 0;
 	copy = map_copy(file->map);
 	if (!copy)
@@ -102,12 +103,12 @@ char	**flood_fill_process(t_file *file)
 	pos.x = file->player_start_posX;
 	pos.y = file->player_start_posY;
 	printf("X : %d, Y : %d\n", pos.x, pos.y);
-	int rep = flood_fill(pos, copy);
+	rep = flood_fill(pos, copy);
 	printf("%d\n", rep);
 	if (rep == -1)
 	{
-		ft_putstr_fd("Error:\n Map has holes", 2);
-		return (NULL);
+		ft_putstr_fd("Error:\n Map has holes\n", 2);
+		// return (NULL);
 	}
 	printf("\n");
 	while (copy[i])
