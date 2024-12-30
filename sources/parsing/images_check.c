@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 10:58:15 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/30 12:50:34 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/30 15:20:42 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static int check_graphics(t_graphics *graphics)
 		return (texture_is_missing("North wall"));
 	if (graphics->wall_south == NULL)
 		return (texture_is_missing("South wall"));
+	return (1);
 }
 
 static mlx_image_t	*get_image(mlx_t *mlx, const char *path)
@@ -47,17 +48,19 @@ static mlx_image_t	*get_image(mlx_t *mlx, const char *path)
 	return (image);
 }
 
-t_graphics	*get_graphics(mlx_t mlx, t_file *file)
+t_graphics	*get_graphics(mlx_t *mlx, t_file *file)
 {
 	t_graphics	*imgs;
 
 	imgs = ft_calloc(sizeof(t_graphics *), 1);
 	if (!imgs)
 		return (NULL);
-	imgs->wall_south = get_texture(file->path_south);
-	imgs->wall_north = get_texture(file->path_north);
-	imgs->wall_east = get_texture(file->path_east);
-	imgs->wall_west = get_texture(file->path_west);
+	imgs->wall_south = get_image(mlx, file->path_south);
+	imgs->wall_north = get_image(mlx, file->path_north);
+	imgs->wall_east = get_image(mlx, file->path_east);
+	imgs->wall_west = get_image(mlx, file->path_west);
+	imgs->sky = rgb_convert(file->rgb_sky);
+	imgs->sky = rgb_convert(file->rgb_ground);
 	if (!check_graphics(imgs))
 		return (NULL);
 	return (imgs);

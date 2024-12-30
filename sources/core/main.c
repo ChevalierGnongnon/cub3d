@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:54:00 by lahlsweh          #+#    #+#             */
-/*   Updated: 2024/12/30 10:51:39 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/30 15:33:47 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ int	check_extension(char *map_path)
 
 void	launch(char *path)
 {
-	int		fd;
 	t_file	*process;
-
+	mlx_t	*mlx;
+	int		fd;
+	
 	if (file_check_textures(path) && file_check_rgb(path))
 	{
 		fd = open(path, O_RDONLY);

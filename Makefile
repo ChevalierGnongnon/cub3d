@@ -5,20 +5,21 @@ OFLAGS = -I. -Wall -Wextra -Werror -g3
 
 # make re && clear && ./cub3d
 
-FILES = core/main \
-	core/display \
+FILES = core/display \
 	core/free \
+	core/main \
 	parsing/check_components \
 	parsing/error_parsing \
-	parsing/get_map \
-	parsing/get_value \
 	parsing/file_process \
 	parsing/flood_fill \
-	parsing/rgb_check \
+	parsing/get_map \
+	parsing/get_value \
+	parsing/images_check \
+	parsing/rgb \
 	utils/char \
-	utils/map \
 	utils/file_check \
-	utils/strings
+	utils/map \
+	utils/strings \
 
 SOURCES = $(foreach f, $(FILES), sources/$(f).c)
 OBJECTS = $(foreach f, $(FILES), objects/$(f).o)
