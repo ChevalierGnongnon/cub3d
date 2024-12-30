@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2024/12/20 12:21:53 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/30 11:39:52 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,20 @@
 # include <errno.h>
 # include <sys/stat.h>
 # include <sys/time.h>
-// # include <X11/keysym.h>
-// # include <X11/X.h>
-// # include "./MLX42/include/MLX42/MLX42.h"
+# include <X11/keysym.h>
+# include <X11/X.h>
+# include "./MLX42/include/MLX42/MLX42.h"
 # include "libft/sources/libft.h"
 
-// typedef struct s_graphics
-// {
-// 	mlx_image_t	*wall_south;
-// 	mlx_image_t	*wall_north;
-// 	mlx_image_t *wall_west;
-// 	mlx_image_t *wall_east;
-// 	mlx_image_t *ground;
-// 	mlx_image_t	*sky;
-// }	t_img;
+typedef struct s_graphics
+{
+	mlx_image_t	*wall_south;
+	mlx_image_t	*wall_north;
+	mlx_image_t *wall_west;
+	mlx_image_t *wall_east;
+	mlx_image_t *ground;
+	mlx_image_t	*sky;
+}	t_graphics;
 
 typedef struct s_pos
 {
@@ -57,11 +57,17 @@ typedef struct s_file
 	const char	*rgb_sky;
 }	t_file;
 
-typedef struct player
+typedef struct s_player
 {
 	int	pos_x;
 	int	pos_y;
 }	t_player;
+
+typedef struct s_program
+{
+	t_file 		*file;
+	t_graphics	*graphics;
+}	t_program;
 
 /*
  * PARSING

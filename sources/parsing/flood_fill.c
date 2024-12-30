@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:27:27 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/29 15:11:56 by chhoflac         ###   ########.fr       */
+/*   Updated: 2024/12/30 09:35:48 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ char	**flood_fill_process(t_file *file)
 	if (rep == -1)
 	{
 		ft_putstr_fd("Error:\n Map has holes\n", 2);
-		// return (NULL);
+		return (NULL);
 	}
 	printf("\n");
 	while (copy[i])
