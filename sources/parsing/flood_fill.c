@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:27:27 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/02 10:46:26 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/02 15:05:44 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,18 @@ static void	get_start_position(char **copy, t_file *file)
 		i++;
 	}
 }
+
+// static int	is_inbounds(const char **map, t_pos *pos)
+// {
+// 	int	size_x;
+// 	int	size_y;
+
+// 	size_x = get_widthmax(map);
+// 	size_y = 0;
+// 	while (map[size_y])
+// 		size_y++;
+// 	if (pos->x >= size_x || pos->y >= )
+// }
 
 int	is_accessible(char element)
 {
@@ -66,7 +78,20 @@ void	flood_fill(t_pos pos, char **map, int *flag)
 	}
 }
 
-char	**flood_fill_process(t_file *file)
+int check_bordline (const char *line)
+{
+	int	i;
+	
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] == '2')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+int	flood_fill_process(t_file *file)
 {
 	t_pos	pos;
 	char	**copy;
@@ -76,8 +101,9 @@ char	**flood_fill_process(t_file *file)
 	i = 0;
 	flag = 0;
 	copy = map_copy(file->map);
+	printf("%zu\n", ft_strlen(copy[0]));
 	if (!copy)
-		return (NULL);
+		return (0);
 	get_start_position(copy, file);
 	pos.x = file->player_start_posX;
 	pos.y = file->player_start_posY;
@@ -86,8 +112,13 @@ char	**flood_fill_process(t_file *file)
 	{
 		ft_putstr_fd("Error:\n Map has holes\n", 2);
 		free_map((const char **) copy);
-		return (NULL);
+		return (0);
+	}
+	while (copy[i])
+	{
+		printf("%s\n", copy[i]);
+		i++;
 	}
 	free_map((const char **) copy);
-	return (copy);
+	return (1);
 }
