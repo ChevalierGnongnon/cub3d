@@ -6,31 +6,11 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:27:27 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/02 09:51:41 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/02 10:46:26 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
-
-// void	fill_holes(char **map)
-// {
-// 	int	i;
-// 	int j;
-	
-// 	i = 0;
-// 	j = 0;
-// 	while (map[i])
-// 	{
-// 		j = 0;
-// 		while (map[i][j])
-// 		{
-// 			if (is_whitespace(map[i][j]))
-// 				map[i][j] = '1';
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// }
 
 static void	get_start_position(char **copy, t_file *file)
 {
@@ -54,7 +34,7 @@ static void	get_start_position(char **copy, t_file *file)
 	}
 }
 
-int is_accessible(char element)
+int	is_accessible(char element)
 {
 	if (is_whitespace(element))
 		return (-1);
@@ -62,12 +42,11 @@ int is_accessible(char element)
 		return (0);
 	return (1);
 }
-int	flood_fill(t_pos pos, char **map, int *flag)
-{
-	static int	cnt = 0;
-	int 		check;
 
-	cnt++;
+void	flood_fill(t_pos pos, char **map, int *flag)
+{
+	int	check;
+
 	check = is_accessible(map[pos.x][pos.y]);
 	if (check == -1)
 		(*flag) = -1;
@@ -85,7 +64,6 @@ int	flood_fill(t_pos pos, char **map, int *flag)
 		pos.y -= 2;
 		flood_fill(pos, map, flag);
 	}
-	return (check);
 }
 
 char	**flood_fill_process(t_file *file)
@@ -94,28 +72,21 @@ char	**flood_fill_process(t_file *file)
 	char	**copy;
 	int		flag;
 	int		i;
-	int 	rep;
-	
+
 	i = 0;
+	flag = 0;
 	copy = map_copy(file->map);
 	if (!copy)
 		return (NULL);
 	get_start_position(copy, file);
 	pos.x = file->player_start_posX;
 	pos.y = file->player_start_posY;
-	printf("X : %d, Y : %d\n", pos.x, pos.y);
-	rep = flood_fill(pos, copy, &flag);
-	printf("%d\n", rep);
+	flood_fill(pos, copy, &flag);
 	if (flag == -1)
 	{
 		ft_putstr_fd("Error:\n Map has holes\n", 2);
+		free_map((const char **) copy);
 		return (NULL);
-	}
-	printf("\n");
-	while (copy[i])
-	{
-		printf("%s\n", copy[i]);
-		i++;
 	}
 	free_map((const char **) copy);
 	return (copy);
