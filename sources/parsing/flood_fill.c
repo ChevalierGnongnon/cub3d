@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:27:27 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/02 15:05:44 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/03 17:08:31 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,25 @@ int check_bordline (const char *line)
 	}
 	return (1);
 }
+
+static int check_borders(char **map)
+{
+	int	i;
+
+	i = 0;
+	if (!check_bordline(map[i]))
+		return (0);
+	while (i < map_size((const char **) map) - 1)
+	{
+		if (map[i][0] == '2' || map[i][ft_strlen(map[i]) - 1] == '2')
+			return (0);
+		i++;
+	}
+	if (!check_bordline(map[i]))
+		return (0);
+	return (1);
+}
+
 int	flood_fill_process(t_file *file)
 {
 	t_pos	pos;
@@ -119,6 +138,8 @@ int	flood_fill_process(t_file *file)
 		printf("%s\n", copy[i]);
 		i++;
 	}
+	if (!check_borders(copy))
+		return (ft_putstr_fd("Error:\n map has holes", 2), 0);
 	free_map((const char **) copy);
 	return (1);
 }
