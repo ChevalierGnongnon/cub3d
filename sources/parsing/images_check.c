@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 10:58:15 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/02 09:45:49 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/05 15:12:52 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,21 @@
 // 	return (image);
 // }
 
-// t_graphics	*get_graphics(mlx_t *mlx, t_file *file)
-// {
-// 	t_graphics	*imgs;
+t_graphics	*get_graphics(t_file *file)
+{
+	t_graphics	*imgs;
 
-// 	imgs = ft_calloc(sizeof(t_graphics *), 1);
-// 	if (!imgs)
-// 		return (NULL);
-// 	imgs->wall_south = get_image(mlx, file->path_south);
-// 	imgs->wall_north = get_image(mlx, file->path_north);
-// 	imgs->wall_east = get_image(mlx, file->path_east);
-// 	imgs->wall_west = get_image(mlx, file->path_west);
-// 	imgs->sky = rgb_convert(file->rgb_sky);
-// 	imgs->sky = rgb_convert(file->rgb_ground);
-// 	if (!check_graphics(imgs))
-// 		return (NULL);
-// 	return (imgs);
-// }
+	imgs = ft_calloc(sizeof(t_graphics *), 1);
+	if (!imgs)
+		return (NULL);
+	// imgs->wall_south = get_image(mlx, file->path_south);
+	// imgs->wall_north = get_image(mlx, file->path_north);
+	// imgs->wall_east = get_image(mlx, file->path_east);
+	// imgs->wall_west = get_image(mlx, file->path_west);
+	imgs->sky = rgb_convert(file->rgb_sky);
+	imgs->ground = rgb_convert(file->rgb_ground);
+	// printf("Sky : %d\nGround : %d\n", imgs->sky, imgs->ground);
+	// if (!check_graphics(imgs))
+	// 	return (NULL);
+	return (imgs);
+}

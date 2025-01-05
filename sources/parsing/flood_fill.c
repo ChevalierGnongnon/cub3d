@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:27:27 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/03 17:08:31 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/05 16:08:55 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,6 @@ static void	get_start_position(char **copy, t_file *file)
 	}
 }
 
-// static int	is_inbounds(const char **map, t_pos *pos)
-// {
-// 	int	size_x;
-// 	int	size_y;
-
-// 	size_x = get_widthmax(map);
-// 	size_y = 0;
-// 	while (map[size_y])
-// 		size_y++;
-// 	if (pos->x >= size_x || pos->y >= )
-// }
-
 int	is_accessible(char element)
 {
 	if (is_whitespace(element))
@@ -59,23 +47,28 @@ void	flood_fill(t_pos pos, char **map, int *flag)
 {
 	int	check;
 
-	check = is_accessible(map[pos.x][pos.y]);
-	if (check == -1)
-		(*flag) = -1;
-	if (check != -1 && map[pos.x] && map[pos.x][pos.y]
-		&& is_accessible(map[pos.x][pos.y]))
+	if (pos.x >= 0 && pos.x <= map_size((const char **) map + 1))
 	{
-		map[pos.x][pos.y] = '2';
-		pos.x++;
-		flood_fill(pos, map, flag);
-		pos.x -= 2;
-		flood_fill(pos, map, flag);
-		pos.x++;
-		pos.y++;
-		flood_fill(pos, map, flag);
-		pos.y -= 2;
-		flood_fill(pos, map, flag);
+		check = is_accessible(map[pos.x][pos.y]);
+		if (check == -1)
+			(*flag) = -1;
+		if (check != -1 && map[pos.x] && map[pos.x][pos.y]
+			&& is_accessible(map[pos.x][pos.y]))
+		{
+			map[pos.x][pos.y] = '2';
+			pos.x++;
+			flood_fill(pos, map, flag);
+			pos.x -= 2;
+			flood_fill(pos, map, flag);
+			pos.x++;
+			pos.y++;
+			flood_fill(pos, map, flag);
+			pos.y -= 2;
+			flood_fill(pos, map, flag);
+		}
 	}
+	else
+		(*flag) = -1;
 }
 
 int check_bordline (const char *line)
@@ -120,23 +113,22 @@ int	flood_fill_process(t_file *file)
 	i = 0;
 	flag = 0;
 	copy = map_copy(file->map);
-	printf("%zu\n", ft_strlen(copy[0]));
 	if (!copy)
 		return (0);
 	get_start_position(copy, file);
 	pos.x = file->player_start_posX;
 	pos.y = file->player_start_posY;
 	flood_fill(pos, copy, &flag);
+	while (copy[i])
+	{
+		printf("%s\n", copy[i]);
+		i++;
+	}
 	if (flag == -1)
 	{
 		ft_putstr_fd("Error:\n Map has holes\n", 2);
 		free_map((const char **) copy);
 		return (0);
-	}
-	while (copy[i])
-	{
-		printf("%s\n", copy[i]);
-		i++;
 	}
 	if (!check_borders(copy))
 		return (ft_putstr_fd("Error:\n map has holes", 2), 0);
