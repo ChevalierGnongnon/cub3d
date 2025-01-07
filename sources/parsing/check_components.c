@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:23:28 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/07 14:38:52 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/07 14:55:09 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ int	file_check_values(t_file *file)
 	if (!file)
 		return (err_int("Memory allocation went wrong.\n", 0));
 	if (!file->path_north)
-		return (err_int("North texture is missing.\n", 0));
+		return (err_int("North texture is missing or invalid.\n", 0));
 	if (!file->path_south)
-		return (err_int("South texture is missing.\n",0));
+		return (err_int("South texture is missing or invalid.\n",0));
 	if (!file->path_west)
-		return (err_int("West texture is missing.\n", 0));
+		return (err_int("West texture is missing or invalid.\n", 0));
 	if (!file->path_east)
-		return (err_int("East texture is missing.\n", 0));
+		return (err_int("East texture is missing or invalid.\n", 0));
 	if (!file->map)
 		return (err_int("Map is missing or invalid.\n", 0));
 	// if (!file->rgb_ground || !rgb_check(file->rgb_ground))

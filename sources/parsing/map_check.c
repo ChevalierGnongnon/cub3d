@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:15:55 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/07 14:34:59 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/07 15:03:13 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,10 @@ static int checklines(const char **map)
 	while (map[i])
 	{
 		if (is_empty(map[i]))
-			return (0);
+		{
+			if (map[i + 1] && !is_empty(map[i + 1]))
+				return (0);
+		}
 		i++;
 	}
 	return (1);
