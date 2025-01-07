@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:54:00 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/05 13:02:23 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/07 12:50:04 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	launch(char *path)
 		}
 	}
 	else
-		file_elements_not_valid();
+		err_null("File elements are not valid.");
 }
 
 int	main(int argc, char **argv)

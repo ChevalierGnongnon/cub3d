@@ -6,20 +6,28 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:17:28 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/18 12:25:25 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/07 12:55:28 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-void	*file_elements_not_valid(void)
+void	*err_null(const char *message)
 {
-	ft_putstr_fd("Error:\n file elements are not valid !", 2);
+	ft_putstr_fd("Error:\n", 2);
+	ft_putstr_fd(message, 2);
 	return (NULL);
 }
 
-void	*multiple_starting_pos(void)
+int		err_int(const char *message, int err_num)
 {
-	ft_putstr_fd("Error: forbidden char or multiple starting position", 2);
-	return (NULL);
+	ft_putstr_fd("Error:\n", 2);
+	ft_putstr_fd(message, 2);
+	return (err_num);
+}
+
+void	err_no_return(const char *message)
+{
+	ft_putstr_fd("Error:\n", 2);
+	ft_putstr_fd(message, 2);
 }

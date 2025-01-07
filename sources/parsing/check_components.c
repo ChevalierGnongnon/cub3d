@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:23:28 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/05 16:37:40 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/07 14:24:06 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	file_check_values(t_file *file)
 	if (!file->path_east)
 		return (ft_putstr_fd("Error:\nEast texture is missing.\n", 2), 0);
 	if (!file->map)
-		return (ft_putstr_fd("Error:\nMap is missing.\n", 2), 0);
+		return (0);
 	// if (!file->rgb_ground || !rgb_check(file->rgb_ground))
 	// 	return (ft_putstr_fd
 	// 		("Error:\n Ground rgb is missing or in the wrong shape.\n", 2), 0);

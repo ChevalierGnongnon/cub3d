@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:52:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/19 11:38:20 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/07 12:51:03 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,7 @@ void	*file_not_valid(t_file *file, char *line)
 {
 	free(line);
 	free_file(file);
-	file_elements_not_valid();
-	return (NULL);
+	return (err_null("File elements are not valid"));
 }
 
 t_file	*fileset(t_file *file, int *flag, int fd)

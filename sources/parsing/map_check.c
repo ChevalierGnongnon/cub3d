@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:15:55 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/07 12:35:28 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/07 14:22:14 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	charschecker(const char **map)
 		{
 			if (is_forbidden(map[i][j])
 				|| (is_player_orientation(map[i][j]) && startflag))
-				return (ft_putstr_fd("Error:\nForbiden char", 2), 1);
+				return (1);
 			if (is_player_orientation(map[i][j]) && !startflag)
 				startflag = 1;
 			j++;
@@ -85,9 +85,12 @@ static int checklines(const char **map)
 
 int mapchecker(const char **map)
 {
-	if (!charschecker(map) || !check_mapsize(map)
-		|| !checklines(map))
-		return (0);
+	if (charschecker(map))
+		return (err_int("Forbidden char\n", 0));
+	if (!check_mapsize(map))
+		return (err_int("Map is too big\n", 0));
+	if (!checklines(map))
+		return (err_int("Multiple maps\n", 0));
 	return (1);
 }
 

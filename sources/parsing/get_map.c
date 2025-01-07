@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:15:37 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/07 12:30:09 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/07 14:23:03 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ const char	**map_recup(int fd)
 	}
 	free(line);
 	if (!mapchecker(map))
-		return (ft_putstr_fd("Error:\nMap is invalid", 2), NULL);
+		return (NULL);
 	return (map);
 }
