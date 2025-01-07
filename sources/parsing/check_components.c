@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:23:28 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/07 14:24:06 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/07 14:38:52 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 int	file_check_values(t_file *file)
 {
 	if (!file)
-		return (ft_putstr_fd("Error:\nMemory allocation went wrong.\n", 2), 0);
+		return (err_int("Memory allocation went wrong.\n", 0));
 	if (!file->path_north)
-		return (ft_putstr_fd("Error:\nNorth texture is missing.\n", 2), 0);
+		return (err_int("North texture is missing.\n", 0));
 	if (!file->path_south)
-		return (ft_putstr_fd("Error:\nSouth texture is missing.\n", 2), 0);
+		return (err_int("South texture is missing.\n",0));
 	if (!file->path_west)
-		return (ft_putstr_fd("Error:\nWest texture is missing.\n", 2), 0);
+		return (err_int("West texture is missing.\n", 0));
 	if (!file->path_east)
-		return (ft_putstr_fd("Error:\nEast texture is missing.\n", 2), 0);
+		return (err_int("East texture is missing.\n", 0));
 	if (!file->map)
-		return (0);
+		return (err_int("Map is missing or invalid.\n", 0));
 	// if (!file->rgb_ground || !rgb_check(file->rgb_ground))
 	// 	return (ft_putstr_fd
 	// 		("Error:\n Ground rgb is missing or in the wrong shape.\n", 2), 0);

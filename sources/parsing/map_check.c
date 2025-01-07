@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:15:55 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/07 14:22:14 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/07 14:34:59 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,8 @@ static int checklines(const char **map)
 
 int mapchecker(const char **map)
 {
-	if (charschecker(map))
-		return (err_int("Forbidden char\n", 0));
-	if (!check_mapsize(map))
-		return (err_int("Map is too big\n", 0));
-	if (!checklines(map))
-		return (err_int("Multiple maps\n", 0));
+	if (charschecker(map) || !check_mapsize(map) || !checklines(map))
+		return (0);
 	return (1);
 }
 
