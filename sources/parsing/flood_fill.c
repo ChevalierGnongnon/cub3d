@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:27:27 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/05 16:08:55 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/07 10:02:24 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,19 +119,12 @@ int	flood_fill_process(t_file *file)
 	pos.x = file->player_start_posX;
 	pos.y = file->player_start_posY;
 	flood_fill(pos, copy, &flag);
-	while (copy[i])
-	{
-		printf("%s\n", copy[i]);
-		i++;
-	}
-	if (flag == -1)
+	if (flag == -1 || !check_borders(copy))
 	{
 		ft_putstr_fd("Error:\n Map has holes\n", 2);
 		free_map((const char **) copy);
 		return (0);
 	}
-	if (!check_borders(copy))
-		return (ft_putstr_fd("Error:\n map has holes", 2), 0);
 	free_map((const char **) copy);
 	return (1);
 }

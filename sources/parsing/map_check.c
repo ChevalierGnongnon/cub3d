@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:15:55 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/02 13:46:49 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/07 12:35:28 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	charschecker(const char **map)
 		{
 			if (is_forbidden(map[i][j])
 				|| (is_player_orientation(map[i][j]) && startflag))
-				return (multiple_starting_pos());
+				return (ft_putstr_fd("Error:\nForbiden char", 2), 1);
 			if (is_player_orientation(map[i][j]) && !startflag)
 				startflag = 1;
 			j++;
@@ -55,10 +55,38 @@ int check_mapsize(const char **map)
 	return (1);
 }
 
+static int is_empty(const char *line)
+{
+	int i;
+
+	i = 0;
+	while (line[i])
+	{
+		if(!is_whitespace(line[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+static int checklines(const char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		if (is_empty(map[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int mapchecker(const char **map)
 {
 	if (!charschecker(map) || !check_mapsize(map)
-		|| !flood_fill_process(map))
+		|| !checklines(map))
 		return (0);
 	return (1);
 }

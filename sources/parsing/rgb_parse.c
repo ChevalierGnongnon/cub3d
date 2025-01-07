@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rgb.c                                              :+:      :+:    :+:   */
+/*   rgb_parse.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:37:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/05 15:11:49 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/06 13:57:35 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ int rgb_check(t_rgb *rgb)
 	return (1);
 }
 
-
-
 unsigned int rgb_convert(const char *srgb)
 {
 	t_rgb			*rgb;
@@ -90,10 +88,9 @@ unsigned int rgb_convert(const char *srgb)
 		free(rgb);
 		return (-1);
 	}
-	// printf("r: %d g: %d b: %d\n", rgb->red, rgb->green, rgb->blue);
 	value = 0;
 	value += rgb->red << 24 | rgb->green << 16 | rgb->blue << 8 | 1;
-	// printf("value finale : %d\n", value);
+	printf("0x%X\n", value);
 	free(rgb);
 	return (value);
 }

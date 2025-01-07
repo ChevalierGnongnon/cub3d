@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/05 14:24:57 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/07 12:33:26 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ typedef struct s_graphics
 	mlx_image_t	*wall_north;
 	mlx_image_t *wall_west;
 	mlx_image_t *wall_east;
-	int			ground;
-	int			sky;
+	unsigned int			ground;
+	unsigned int			sky;
 }	t_graphics;
 
 typedef struct s_rgb
@@ -84,6 +84,7 @@ const char	*get_value(char *line, char *key, size_t start, int *count);
 t_file		*file_process(int fd);
 const char	**map_recup(int fd);
 char		**map_copy(const char **map);
+int 		mapchecker(const char **map);
 int			file_check_values(t_file *file);
 void 		flood_fill(t_pos pos, char **map, int *flag);
 int			flood_fill_process(t_file *file);
@@ -120,7 +121,7 @@ int			file_error(int code);
  */
 int			is_whitespace(char c);
 int			is_player_orientation(char c);
-
+int			is_forbidden(char c);
 /*
  * STRING UTILS
  */

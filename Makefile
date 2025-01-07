@@ -15,7 +15,8 @@ FILES = core/display \
 	parsing/get_map \
 	parsing/get_value \
 	parsing/images_check \
-	parsing/rgb \
+	parsing/map_check \
+	parsing/rgb_parse \
 	utils/char \
 	utils/file_check \
 	utils/map \
