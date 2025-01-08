@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:37:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/08 11:39:42 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/08 13:45:43 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ unsigned int rgb_convert(const char *srgb)
 	}
 	value = 0;
 	value += rgb->red << 24 | rgb->green << 16 | rgb->blue << 8 | 1;
-	printf("0x%X\n", value);
 	free(rgb);
 	return (value);
 }
