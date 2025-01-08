@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:37:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/06 13:57:35 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/08 11:39:42 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	rgb_set(t_rgb *rgb, const char *srgb, int *i, int cnt)
 	int			j;
 	
 	j = (*i);
-	if (cnt > 2)
+	if (cnt > 3)
 		return (-1);
 	while (ft_isdigit(srgb[(*i)]))
 		(*i)++;
@@ -35,6 +35,8 @@ static int	rgb_set(t_rgb *rgb, const char *srgb, int *i, int cnt)
 		rgb->green = value;
 	else if (cnt == 2)
 		rgb->blue = value;
+	else if (cnt == 3)
+		rgb->alpha = value;
 	free((void *) num);
 	return (0);
 }
@@ -50,9 +52,10 @@ static t_rgb	*rgb_get(const char *srgb)
 	rgb = ft_calloc(sizeof(t_rgb), 1);
 	if (!rgb)
 		return (NULL);
-	rgb->red = 0;
-	rgb->green = 0;
-	rgb->blue= 0;
+	rgb->red = -1;
+	rgb->green = -1;
+	rgb->blue = -1;
+	rgb->alpha = 255;
 	while (srgb[i])
 	{
 		if (ft_isdigit(srgb[i]))
@@ -86,7 +89,7 @@ unsigned int rgb_convert(const char *srgb)
 	if (!rgb_check(rgb))
 	{
 		free(rgb);
-		return (-1);
+		return (err_int("rgb entry is missing or invalid.\n", -1));
 	}
 	value = 0;
 	value += rgb->red << 24 | rgb->green << 16 | rgb->blue << 8 | 1;
