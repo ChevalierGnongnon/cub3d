@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:15:55 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/08 14:04:10 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/08 14:33:22 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ int check_mapsize(const char **map)
 		j++;
 	area = i * j;
 	if (area > 5000)
+	{
+		
 		return (0);
+	}
 	return (1);
 }
 
@@ -74,6 +77,8 @@ static int checklines(const char **map)
 	int	i;
 
 	i = 0;
+	while (is_empty(map[i]))
+		i++;
 	while (map[i])
 	{
 		if (is_empty(map[i]))
