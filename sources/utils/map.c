@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:15:05 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/09 14:01:42 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/09 14:35:17 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ const char	**map_copy(const char **map)
 		i++;
 	}
 	copy[i] = NULL;
-	chunked = map_chunk(map);
+	chunked = map_chunk((const char **) copy);
 	if (!chunked)
 		return (NULL);
 	free_map((const char **) copy);
