@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/09 13:58:23 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/09 16:49:51 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ int			ft_strcmp(const char *s1, const char *s2);
 const char *dup_line(const char *line);
 int			map_size(const char **map);
 int 		is_empty(const char *line);
+const char	**map_chunk(const char **map);
 
 /*
  * FILE UTILS
