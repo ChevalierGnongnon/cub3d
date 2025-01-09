@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:17:28 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/07 12:55:28 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/09 17:00:52 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*err_null(const char *message)
 	return (NULL);
 }
 
-int		err_int(const char *message, int err_num)
+int	err_int(const char *message, int err_num)
 {
 	ft_putstr_fd("Error:\n", 2);
 	ft_putstr_fd(message, 2);
@@ -30,4 +30,11 @@ void	err_no_return(const char *message)
 {
 	ft_putstr_fd("Error:\n", 2);
 	ft_putstr_fd(message, 2);
+}
+
+void	*file_not_valid(t_file *file, char *line)
+{
+	free(line);
+	free_file(file);
+	return (err_null("File elements are not valid"));
 }

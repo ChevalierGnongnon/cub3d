@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:52:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/09 16:04:24 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/09 17:00:45 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	find_key(char *line)
 	if (!key)
 		return (0);
 	if ((!ft_strcmp("NO", key) || !ft_strcmp("SO", key)
-		|| !ft_strcmp("WE", key) || !ft_strcmp("EA", key))
+			|| !ft_strcmp("WE", key) || !ft_strcmp("EA", key))
 		&& (line[i + 2] || is_whitespace(line[i + 2])))
 		return (free(key), 1);
 	free(key);
@@ -78,17 +78,10 @@ void	file_preset(t_file *file)
 	file->rgb_sky = NULL;
 }
 
-void	*file_not_valid(t_file *file, char *line)
-{
-	free(line);
-	free_file(file);
-	return (err_null("File elements are not valid"));
-}
-
 t_file	*fileset(t_file *file, int *flag, int fd)
 {
 	char	*line;
-	
+
 	file = ft_calloc(1, sizeof(t_file));
 	if (!file)
 		return (NULL);
@@ -124,7 +117,6 @@ t_file	*file_process(int fd)
 		line = get_next_line(fd);
 	}
 	free(line);
-	// display_process(file);
 	if (!file_check_values(file))
 		return (NULL);
 	return (file);

@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/09 16:49:51 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/09 17:01:37 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void		*file_elements_not_valid(void);
 void		*multiple_starting_pos(void);
 void		*err_null(const char *message);
 int			err_int(const char *message, int err_num);
-
+void		*file_not_valid(t_file *file, char *line);
 /*
  * CHAR UTILS
  */
