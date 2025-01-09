@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:27:27 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/08 15:25:23 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/09 13:34:05 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	flood_fill_process(t_file *file)
 
 	i = 0;
 	flag = 0;
-	copy = map_copy(file->map);
+	copy = flood_fill_copy(file->map);
 	if (!copy)
 		return (0);
 	get_start_position(copy, file);

@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:15:55 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/08 14:33:22 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/09 13:57:58 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int check_mapsize(const char **map)
 	return (1);
 }
 
-static int is_empty(const char *line)
+int is_empty(const char *line)
 {
 	int i;
 

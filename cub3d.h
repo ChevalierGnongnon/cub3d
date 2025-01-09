@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/08 15:25:56 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/09 13:58:23 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ typedef struct s_program
 const char	*get_value(char *line, char *key, size_t start, int *count);
 t_file		*file_process(int fd);
 const char	**map_recup(int fd);
-char		**map_copy(const char **map);
+const char	**map_copy(const char **map);
+char		**flood_fill_copy(const char **map);
 int 		mapchecker(const char **map);
 int			file_check_values(t_file *file);
 void 		flood_fill(t_pos pos, char **map, int *flag);
@@ -132,6 +133,7 @@ int			ft_strcmp(const char *s1, const char *s2);
  */
 const char *dup_line(const char *line);
 int			map_size(const char **map);
+int 		is_empty(const char *line);
 
 /*
  * FILE UTILS
