@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:27:27 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/09 13:34:05 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/10 16:59:05 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ void	flood_fill(t_pos pos, char **map, int *flag)
 	{
 		check = is_accessible(map[pos.x][pos.y]);
 		if (check == -1)
+		{
 			(*flag) = -1;
+			printf("\nx : %d y : %d\n", pos.x, pos.y);
+		}
 		if (check != -1 && map[pos.x] && map[pos.x][pos.y]
 			&& is_accessible(map[pos.x][pos.y]))
 		{
