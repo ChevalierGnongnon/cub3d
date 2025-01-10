@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:52:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/09 17:00:45 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/10 18:31:55 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ t_file	*file_process(int fd)
 	{
 		if (line && find_key(line))
 			set_img_paths(file, line, &flag);
-		else if ((line && !find_key(line) && !flag))
+		else if (line &&  !is_empty(line) && !find_key(line) && !flag)
 			return (file_not_valid(file, line));
 		else if (flag && line)
 			file->map = map_recup(fd);
@@ -117,6 +117,7 @@ t_file	*file_process(int fd)
 		line = get_next_line(fd);
 	}
 	free(line);
+	display_process(file);
 	if (!file_check_values(file))
 		return (NULL);
 	return (file);
