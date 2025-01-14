@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:52:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/14 17:21:54 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/14 17:36:26 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ int	find_key(char *line)
 	int		i;
 
 	i = 0;
-	if (line[i] == ' ' || line[i] == '\t')
+	while (!is_whitespace(line[i]))
 		i++;
+	printf("%d\n", i);
 	key = ft_substr(line, i, 2);
 	if (!key)
 		return (0);
@@ -45,7 +46,7 @@ void	set_img_paths(t_file *file, char *line, int *flag)
 	i = 0;
 	while (line[i] == ' ' || line[i] == '\t')
 		i++;
-	printf("%zu\n\n", i);
+	// printf("%zu\n\n", i);
 	key = ft_substr(line, i, 2);
 	if (!key)
 		return ;
