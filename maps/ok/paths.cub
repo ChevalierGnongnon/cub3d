@@ -2,7 +2,7 @@
 
 
 F     225,  0, 0, 1
-C     220, 30,        -2, 1
+C     220, q, 3
 
 NO    images/north.png
 WE    images/west.png

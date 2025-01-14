@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:15:05 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/10 16:44:21 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/14 15:33:47 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ const char	**map_chunk(const char **map)
 
 	size = 0;
 	i = 0;
-	int j = printf("\t");
-	printf("\n%d\n", j);
 	while (map[i] && !is_empty(map[i]))
 	{
 		size++;
