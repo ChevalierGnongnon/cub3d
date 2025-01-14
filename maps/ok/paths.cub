@@ -1,8 +1,8 @@
 
 
 
-F     225, 30, 0 
-C     220, 30, 0
+F     225,  0, 0, 1
+C     220, 30,        -2, 1
 
 NO    images/north.png
 WE    images/west.png

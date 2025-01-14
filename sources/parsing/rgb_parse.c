@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:37:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/08 13:45:43 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/14 15:17:45 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ static t_rgb	*rgb_get(const char *srgb)
 	rgb->alpha = 255;
 	while (srgb[i])
 	{
+		if (srgb[i] == '-')
+			return (NULL);
 		if (ft_isdigit(srgb[i]))
 		{
 			if(rgb_set(rgb, srgb, &i, cnt) == -1)
@@ -86,6 +88,8 @@ unsigned int rgb_convert(const char *srgb)
 	unsigned int 	value;
 
 	rgb = rgb_get(srgb);
+	if (!rgb)
+		return (err_int("rgb entry is missing or invalid.\n", -1));
 	if (!rgb_check(rgb))
 	{
 		free(rgb);
