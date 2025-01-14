@@ -4,7 +4,7 @@
 F     225,  0, 0, 1
 C     220, q, 3
 
-NO    images/north.png
+		NO    images/north.png
 WE    images/west.png
 EA	  images/east.png
 SO    images/south.png

@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 12:09:30 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/19 11:31:06 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/14 16:31:42 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ const char	*get_value(char *line, char *key, size_t start, int *count)
 	int	end;
 
 	(*count)++;
+	printf("\n%c, %zu\n", line[start], start);
 	while (line[start] && !is_whitespace(line[start]))
 		start++;
 	while (line[start] && is_whitespace(line[start]))

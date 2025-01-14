@@ -38,11 +38,12 @@ $(LIBFT) :
 	$(MAKE) -C libft
 
 clean:
-	rm -rf objects
-	$(MAKE) -C libft fclean
+	rm -rf $(OBJECTS)
+	$(MAKE) -C libft clean
 
 fclean:
 	rm -rf $(NAME) $(LIBFT) objects
+	$(MAKE) -C libft fclean
 
 re: fclean all
 
