@@ -3,12 +3,9 @@ CC = cc
 CFLAGS = -I. -Wall -Wextra -Werror -g3
 OFLAGS = -I. -Wall -Wextra -Werror -g3
 
-# make re && clear && ./cub3d
-
 FILES = core/display \
 	core/free \
 	core/main \
-	parsing/check_components \
 	parsing/error_parsing \
 	parsing/file_process \
 	parsing/flood_fill \

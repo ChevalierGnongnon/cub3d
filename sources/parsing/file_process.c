@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:52:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/14 16:31:42 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/14 17:21:54 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,5 @@ t_file	*file_process(int fd)
 	}
 	free(line);
 	display_process(file);
-	if (!file_check_values(file))
-		return (NULL);
 	return (file);
 }
