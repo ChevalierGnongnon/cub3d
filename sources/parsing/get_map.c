@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:15:37 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/10 16:20:06 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/15 13:32:30 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ const char	**map_recup(int fd)
 	if (!map)
 		return (NULL);
 	line = get_next_line(fd);
-	printf("\n%s | %zu\n", line, ft_strlen(line));
 	while (line == NULL)
 	{
 		free(line);
