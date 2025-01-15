@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:15:37 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/15 13:32:30 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:19:21 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ const char	**map_recup(int fd)
 	map = ft_calloc(2, sizeof(char *));
 	if (!map)
 		return (NULL);
-	line = get_next_line(fd);
-	while (line == NULL)
-	{
-		free(line);
-		line = get_next_line(fd);
-	}
-	map = map_edit(map, line);
-	free(line);
+	// line = get_next_line(fd);
+	// while (line == NULL)
+	// {
+	// 	free(line);
+	// 	line = get_next_line(fd);
+	// }
+	// map = map_edit(map, line);
+	// free(line);
 	line = get_next_line(fd);
 	while (line)
 	{
