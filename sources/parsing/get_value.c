@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 12:09:30 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/15 15:31:11 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/15 15:31:57 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,10 @@ const char	*get_value(char *line, char *key, size_t start, int *count)
 	int	end;
 	
 	(*count)++;
-	printf("key : %s AAAAAAAAAAAAAAAAAAAAA\n",key);
-	printf("'%c'\n", line[start]);
 	while (line[start] && !is_whitespace(line[start]))
 		start++;
-	printf("'%c'\n", line[start]);
 	while (line[start] && is_whitespace(line[start]))
 		start++;
-	printf("'%c'\n", line[start]);
 	if (start == ft_strlen(line))
 		return (NULL);
 	end = start;
