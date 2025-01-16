@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:52:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/16 15:13:44 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/16 15:24:49 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,16 +112,12 @@ t_file	*file_process(int fd)
 		else if (line &&  !is_empty(line) && !find_key(line) && !flag)
 			return (file_not_valid(file, line));
 		else if (flag && line)
-		{
-			printf("%s\n", line);
 			file->map = map_recup(fd, line);
-		}
 		free(line);
 		line = get_next_line(fd);
 	}
 	if (!file->map)
 		return (free_file(file), err_null("Map is invalid or inexistant\n"), NULL);
-	// display_process(file);
 	free(line);
 	return (file);
 }
