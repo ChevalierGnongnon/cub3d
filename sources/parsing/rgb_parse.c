@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:37:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/15 17:18:19 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/16 12:43:35 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	rgb_set(t_rgb *rgb, const char *srgb, int *i, int cnt)
 	j = (*i);
 	if (cnt > 3)
 		return (-1);
-	while (ft_isdigit(srgb[(*i)]))
+	while (srgb[(*i)] && ft_isdigit(srgb[(*i)]))
 		(*i)++;
 	num = ft_substr(srgb, j, (*i) - j);
 	if (!num)

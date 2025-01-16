@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/09 17:01:37 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/16 13:35:26 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ typedef struct s_program
  */
 const char	*get_value(char *line, char *key, size_t start, int *count);
 t_file		*file_process(int fd);
-const char	**map_recup(int fd);
+const char	**map_recup(int fd, char *line);
 const char	**map_copy(const char **map);
 char		**flood_fill_copy(const char **map);
 int 		mapchecker(const char **map);

@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:15:37 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/15 17:19:21 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/16 14:21:45 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,34 +34,38 @@ static const char	**map_edit(const char **map, char *line)
 	return (new_map);
 }
 
-const char	**map_recup(int fd)
+const char	**map_recup(int fd, char *line)
 {
 	const char	**map;
 	const char	**copy;
-	char		*line;
+	char		*next;
 	
 
 	map = ft_calloc(2, sizeof(char *));
 	if (!map)
 		return (NULL);
-	// line = get_next_line(fd);
-	// while (line == NULL)
+	if (is_empty(line))
+	{	
+		while (is_empty(line))
+		{
+			free(line);
+			line = get_next_line(fd);
+		}
+	}	
+	// else
 	// {
-	// 	free(line);
-	// 	line = get_next_line(fd);
-	// }
-	// map = map_edit(map, line);
-	// free(line);
-	line = get_next_line(fd);
-	while (line)
-	{
 		map = map_edit(map, line);
 		if (!map)
-			return (NULL);
-		free(line);
-		line = get_next_line(fd);
+			return (free_map(map));
+	// }
+	next = get_next_line(fd);
+	while (next)
+	{
+		map = map_edit(map, next);
+		if (!map)
+			return (free_map(map));
+		next = get_next_line(fd);
 	}
-	free(line);
 	if (!mapchecker(map))
 		return (NULL);
 	copy = map_copy(map);
