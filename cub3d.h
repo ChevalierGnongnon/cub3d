@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/16 13:35:26 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/20 13:29:42 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,8 +126,8 @@ int			is_forbidden(char c);
 /*
  * STRING UTILS
  */
-int			ft_strcmp(const char *s1, const char *s2);
-
+int				ft_strcmp(const char *s1, const char *s2);
+unsigned int	ft_atou(const char *str);
 /*
  * MAP UTILS 
  */
