@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/22 10:44:14 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/22 16:24:55 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int 		get_widthmax(const char **map);
  * Graphics
  */
 
-t_graphics	*get_graphics(t_file *file);
+t_graphics	*get_graphics(mlx_t *mlx, t_file *file);
 
 /*
  * RGB

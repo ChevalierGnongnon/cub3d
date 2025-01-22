@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:54:00 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/22 16:13:43 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/22 16:25:45 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	launch(char *path)
 				mlx = mlx_init(130, 130, "gratfwetuwftvr", true);
 				if (!mlx)
 					return (ft_putstr_fd("Error", 2));
-				get_graphics(process);
+				get_graphics(mlx, process);
 				free_file(process);
 			}
 			else
