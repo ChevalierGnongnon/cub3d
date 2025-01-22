@@ -6,37 +6,35 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:37:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/20 15:24:31 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/22 12:14:44 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-// static int alpha_check(const char *line)
-// {
-// 	int i; 
-	
-// 	i = 0;
-// 	while (line[i])
-// 	{
-// 		// printf("'%c'\n", line[i]);
-// 		if (!is_whitespace(line[i]) && !ft_isdigit(line[i])
-// 			&& line[i] != ',')
-// 			return (0);
-// 		i++;
-// 	}
-// 	return(1);
-// }
+static int	rgb_checker(const char *srgb)
+{
+	int	i;
 
-// static int get_rgb_value(const char *rgb_part)
-// {
-// 	char	*sub;
-// 	int		value;
-// 	int 	i;
-
-// 	i = 0;
-// 	while (is )
-// }
+	i = 0;
+	while (srgb[i])
+	{
+		printf("[%c]", srgb[i]);
+		if (srgb[i] == ',' && srgb[i + 1] == ',')
+		{
+			printf("virgules suivies\n");
+			return (0);
+		}
+		else if (!ft_isdigit(srgb[i]) && !is_whitespace(srgb[i]) && srgb[i] != ',')
+		{
+			printf("not allowed\n");
+			return (0);
+		}
+		i++;
+		printf("ok\n");
+	}
+	return (1);
+}
 
 static t_rgb *rgb_get(const char *srgb)
 {
@@ -86,19 +84,23 @@ unsigned int rgb_convert(const char *srgb)
 
 	if (!srgb)
 		return (err_int("rgb entry is missing or invalid.\n", -1));
-	rgb = rgb_get(srgb);
-	// printf("%d %d %d\n", rgb->red, rgb->green, rgb->blue);
-	if (!rgb)
-		return (err_int("rgb entry is missing or invalid.\n", -1));
-	if (!rgb_check(rgb))
+	if (rgb_checker(srgb))
 	{
+		rgb = rgb_get(srgb);
+		if (!rgb)
+			return (err_int("rgb entry is missing or invalid.\n", -1));
+		if (!rgb_check(rgb))
+		{
+			free(rgb);
+			return (err_int("rgb entry is missing or invalid.\n", -1));
+		}
+		rgb->alpha = 255; //enlever
+		value = rgb->red << 24 | rgb->green << 16 | rgb->blue << 8 | rgb->alpha;
+		
+		printf("r: %d g:%d b:%d a:%d value : %x\n", rgb->red, rgb->green, rgb->blue, rgb->alpha, value);
 		free(rgb);
-		return (err_int("rgb entry is missing or invalid.\n", -1));
+		return (value);
 	}
-	rgb->alpha = 255; //enlever
-	value = rgb->red << 24 | rgb->green << 16 | rgb->blue << 8 | rgb->alpha;
-	
-	printf("r: %d g:%d b:%d a:%d value : %x\n", rgb->red, rgb->green, rgb->blue, rgb->alpha, value);
-	free(rgb);
-	return (value);
+	printf("error");
+	return (0);
 }
