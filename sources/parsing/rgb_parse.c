@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:37:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/22 12:14:44 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/22 16:09:14 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,6 @@ static t_rgb *rgb_get(const char *srgb)
 	const char	**trgb;
 	t_rgb		*rgb;
 	
-	// if (!alpha_check(srgb))
-	// {
-	// 	printf("aaaaaaaa");
-	// 	return (NULL);
-	// }
 	trgb = ft_split(srgb, ',');
 	if (!trgb)
 		return (NULL);
@@ -96,8 +91,6 @@ unsigned int rgb_convert(const char *srgb)
 		}
 		rgb->alpha = 255; //enlever
 		value = rgb->red << 24 | rgb->green << 16 | rgb->blue << 8 | rgb->alpha;
-		
-		printf("r: %d g:%d b:%d a:%d value : %x\n", rgb->red, rgb->green, rgb->blue, rgb->alpha, value);
 		free(rgb);
 		return (value);
 	}

@@ -25,7 +25,7 @@ OBJECTS = $(foreach f, $(FILES), objects/$(f).o)
 LIBFT = libft/libft.a
 
 $(NAME): $(OBJECTS) $(LIBFT)
-	$(CC) $(CFLAGS) -o $@ $^ 
+	$(CC) $(CFLAGS) -o $@ $^ MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm
 
 objects/%.o: sources/%.c
 	@mkdir -p $(dir $@)

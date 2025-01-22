@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:54:00 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/22 10:44:29 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/22 16:13:43 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	check_extension(char *map_path)
 void	launch(char *path)
 {
 	t_file	*process;
+	mlx_t	*mlx;
 	int		fd;
 
 	if (file_check_textures(path) && file_check_rgb(path))
@@ -39,9 +40,9 @@ void	launch(char *path)
 			if (process)
 			{
 				flood_fill_process(process);
-				// mlx = mlx_init(130, 130, "gratfwetuwftvr", true);
-				// if (!mlx)
-				// 	return (ft_putstr_fd("erreur", 2));
+				mlx = mlx_init(130, 130, "gratfwetuwftvr", true);
+				if (!mlx)
+					return (ft_putstr_fd("Error", 2));
 				get_graphics(process);
 				free_file(process);
 			}
