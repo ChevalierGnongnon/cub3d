@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:43:09 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/10 14:28:37 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:53:18 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	**flood_fill_copy(const char **map)
 		j = 0;
 		copy[i] = ft_calloc(sizeof(char *), max);
 		if (!copy[i])
-			return (free_map((const char **) copy));
+			return (free_two_dimentional((const char **) copy));
 		line_copy(map, copy, &j, i);
 		i++;
 	}
@@ -75,7 +75,7 @@ const char	**map_copy(const char **map)
 		j = 0;
 		copy[i] = ft_calloc(sizeof(char *), get_widthmax(map) + 1);
 		if (!copy[i])
-			return (free_map((const char **) copy));
+			return (free_two_dimentional((const char **) copy));
 		line_copy(map, copy, &j, i);
 		fill_with_spaces(map, copy, j, i);
 		i++;
@@ -84,12 +84,6 @@ const char	**map_copy(const char **map)
 	chunked = map_chunk((const char **) copy);
 	if (!chunked)
 		return (NULL);
-	free_map((const char **) copy);
-	int g = 0;
-	while (chunked[g])
-	{
-		printf("%s\n", chunked[g]);
-		g++;
-	}
+	free_two_dimentional((const char **) copy);
 	return (chunked);
 }

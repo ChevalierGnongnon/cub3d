@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/23 13:53:33 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:43:33 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ unsigned int 		rgb_convert(const char *srgb);
 /*
  * FREE
  */
-void		*free_map(const char **map);
+void		*free_two_dimentional(const char **map);
 void		*free_file(t_file *file);
 
 /*

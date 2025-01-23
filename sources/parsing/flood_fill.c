@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:27:27 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/10 16:59:05 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:57:22 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,10 +124,9 @@ int	flood_fill_process(t_file *file)
 	flood_fill(pos, copy, &flag);
 	if (flag == -1 || !check_borders(copy))
 	{
-		ft_putstr_fd("Error:\n Map has holes\n", 2);
-		free_map((const char **) copy);
-		return (0);
+		free_two_dimentional((const char **) copy);
+		return (err_int("Map has holes", 0));
 	}
-	free_map((const char **) copy);
+	free_two_dimentional((const char **) copy);
 	return (1);
 }

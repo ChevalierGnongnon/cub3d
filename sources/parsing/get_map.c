@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:15:37 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/16 15:30:15 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:46:13 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ static const char	**map_edit(const char **map, char *line)
 	{
 		new_map[i] = dup_line(map[i]);
 		if (!new_map)
-			return (free_map(map));
+			return (free_two_dimentional(map));
 		i++;
 	}
 	new_map[i] = dup_line(line);
 	new_map[i + 1] = NULL;
-	free_map(map);
+	free_two_dimentional(map);
 	return (new_map);
 }
 
@@ -54,18 +54,18 @@ const char	**map_recup(int fd, char *line)
 	}
 	map = map_edit(map, line);
 	if (!map)
-		return (free_map(map));
+		return (free_two_dimentional(map));
 	next = get_next_line(fd);
 	while (next)
 	{
 		map = map_edit(map, next);
 		if (!map)
-			return (free_map(map));
+			return (free_two_dimentional(map));
 		next = get_next_line(fd);
 	}
 	if (!mapchecker(map))
 		return (NULL);
 	copy = map_copy(map);
-	free_map(map);
+	free_two_dimentional(map);
 	return (copy);
 }

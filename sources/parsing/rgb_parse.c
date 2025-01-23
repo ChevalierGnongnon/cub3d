@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:37:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/23 14:40:32 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:53:45 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static t_rgb *rgb_get(const char *srgb)
 	rgb = malloc(sizeof(t_rgb *));
 	if (!rgb)
 	{
-		free_map(trgb);
+		free_two_dimentional(trgb);
 		return (NULL);
 	}
 	rgb->red = ft_atou(trgb[0]);
@@ -51,7 +51,7 @@ static t_rgb *rgb_get(const char *srgb)
 	rgb->blue = ft_atou(trgb[2]);
 	if (map_size(trgb) == 4)
 		rgb->alpha = ft_atou(trgb[3]);
-	free_map(trgb);
+	free_two_dimentional(trgb);
 	return (rgb);
 }
 

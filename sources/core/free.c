@@ -6,13 +6,13 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 15:18:35 by chhoflac          #+#    #+#             */
-/*   Updated: 2024/12/19 11:27:38 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:44:04 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-void	*free_map(const char **map)
+void	*free_two_dimentional(const char **map)
 {
 	int	i;
 
@@ -33,7 +33,7 @@ void	*free_map(const char **map)
 void	*free_file(t_file *file)
 {
 	if (file->map)
-		free_map(file->map);
+		free_two_dimentional(file->map);
 	if (file->path_east)
 		free((void *) file->path_east);
 	if (file->path_north)
