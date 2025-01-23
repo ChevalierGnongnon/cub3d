@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:37:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/22 16:09:14 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/23 13:32:29 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,11 @@ static int	rgb_checker(const char *srgb)
 	i = 0;
 	while (srgb[i])
 	{
-		printf("[%c]", srgb[i]);
 		if (srgb[i] == ',' && srgb[i + 1] == ',')
-		{
-			printf("virgules suivies\n");
 			return (0);
-		}
 		else if (!ft_isdigit(srgb[i]) && !is_whitespace(srgb[i]) && srgb[i] != ',')
-		{
-			printf("not allowed\n");
 			return (0);
-		}
 		i++;
-		printf("ok\n");
 	}
 	return (1);
 }

@@ -6,30 +6,22 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 10:58:15 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/22 16:42:50 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/23 13:44:06 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-static int	texture_is_missing(const char *texture_name)
-{
-	ft_putstr_fd("Error:\n", 2);
-	ft_putstr_fd(texture_name, 2);
-	ft_putstr_fd(" texture is missing\n", 2);
-	return (0);
-}
-
 static int check_graphics(t_graphics *graphics)
 {
 	if (graphics->wall_east == NULL)
-		return (texture_is_missing("East wall"));
+		return (err_int("East wall is missing", 0));
 	if (graphics->wall_west == NULL)
-		return (texture_is_missing("West wall"));
+		return (err_int("West wall is missing", 0));
 	if (graphics->wall_north == NULL)
-		return (texture_is_missing("North wall"));
+		return (err_int("North wall is missing", 0));
 	if (graphics->wall_south == NULL)
-		return (texture_is_missing("South wall"));
+		return (err_int("South wall is missing", 0));
 	return (1);
 }
 
