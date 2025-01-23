@@ -6,11 +6,12 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:54:00 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/22 16:25:45 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:02:03 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
+#include "main.h"
 
 int	check_extension(char *map_path)
 {
@@ -33,7 +34,7 @@ void	launch(char *path)
 	{
 		fd = open(path, O_RDONLY);
 		if (fd == -1)
-			ft_putstr_fd("error: map not existing\n", 2);
+			err_no_return("File is not existing\n");
 		else
 		{
 			process = file_process(fd);
@@ -42,7 +43,7 @@ void	launch(char *path)
 				flood_fill_process(process);
 				mlx = mlx_init(130, 130, "gratfwetuwftvr", true);
 				if (!mlx)
-					return (ft_putstr_fd("Error", 2));
+					return (err_no_return("Mlx is not working / wasn't able to launch"));
 				get_graphics(mlx, process);
 				free_file(process);
 			}
@@ -58,15 +59,14 @@ void	launch(char *path)
 int	main(int argc, char **argv)
 {
 	if (argc == 1)
-		return (ft_putstr_fd("Error : map path needed\n", 2), 0);
+		err_no_return("Arguments are not valid.");
 	else if (argc > 2)
-		return (ft_putstr_fd("Error : too many arguments\n", 2), 0);
+		err_no_return("Too many arguments");
 	else
 	{
 		if (check_extension(argv[1]))
 			launch(argv[1]);
 		else
-			ft_putstr_fd("error : wrong extension\n", 2);
+			err_no_return("Wrong file extension");
 	}
-	return (0);
 }
