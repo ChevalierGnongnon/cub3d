@@ -6,12 +6,11 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:54:00 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/23 14:25:47 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/23 15:22:33 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
-#include "main.h"
 
 int	check_extension(char *map_path)
 {
@@ -26,7 +25,8 @@ int	check_extension(char *map_path)
 
 void	launch(char *path)
 {
-	t_file	*process;
+	t_file		*process;
+	t_graphics	*graphics;
 	mlx_t	*mlx;
 	int		fd;
 
@@ -45,8 +45,9 @@ void	launch(char *path)
 				mlx = mlx_init(130, 130, "gratfwetuwftvr", true);
 				if (!mlx)
 					return (err_no_return("Mlx is not working / wasn't able to launch"));
-				get_graphics(mlx, process);
+				graphics = get_graphics(mlx, process);
 				free_file(process);
+				free_graphics(mlx, graphics);
 			}
 			else
 				err_null("File elements are not valid.\n");

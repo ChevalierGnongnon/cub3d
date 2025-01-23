@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 15:18:35 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/23 14:44:04 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/23 15:21:51 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,19 @@ void	*free_two_dimentional(const char **map)
 		i++;
 	}
 	free((void *) map);
+	return (NULL);
+}
+
+void		*free_graphics(mlx_t *mlx, t_graphics *graphics)
+{
+	if (graphics->wall_east)
+		mlx_delete_image(mlx, graphics->wall_east);
+	if (graphics->wall_south)
+		mlx_delete_image(mlx, graphics->wall_south);
+	if (graphics->wall_north)
+		mlx_delete_image(mlx, graphics->wall_north);
+	if (graphics->wall_west)
+		mlx_delete_image(mlx, graphics->wall_west);
 	return (NULL);
 }
 
