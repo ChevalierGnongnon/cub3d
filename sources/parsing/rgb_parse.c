@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:37:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/23 13:32:29 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:40:32 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ static t_rgb *rgb_get(const char *srgb)
 {
 	const char	**trgb;
 	t_rgb		*rgb;
+	int			i;
 	
+	i = 0;
 	trgb = ft_split(srgb, ',');
 	if (!trgb)
 		return (NULL);
@@ -47,8 +49,8 @@ static t_rgb *rgb_get(const char *srgb)
 	rgb->red = ft_atou(trgb[0]);
 	rgb->green = ft_atou(trgb[1]);
 	rgb->blue = ft_atou(trgb[2]);
-	if (map_size(trgb) == 3)
-		rgb->alpha = ft_atou(trgb[2]);
+	if (map_size(trgb) == 4)
+		rgb->alpha = ft_atou(trgb[3]);
 	free_map(trgb);
 	return (rgb);
 }
@@ -81,7 +83,8 @@ unsigned int rgb_convert(const char *srgb)
 			free(rgb);
 			return (err_int("rgb entry is missing or invalid.\n", -1));
 		}
-		rgb->alpha = 255; //enlever
+		// rgb->alpha = 255; //enlever
+		printf("r : %d, g : %d, b : %d a : %d\n", rgb->red, rgb->green, rgb->blue, rgb->alpha);
 		value = rgb->red << 24 | rgb->green << 16 | rgb->blue << 8 | rgb->alpha;
 		free(rgb);
 		return (value);

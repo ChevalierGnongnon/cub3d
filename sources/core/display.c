@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:24:35 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/09 15:47:31 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:25:15 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ void	display_process(t_file *file)
 	printf("Ground: %s\n", file->rgb_ground);
 	printf("Sky: %s\n", file->rgb_sky);
 	printf("----Map----\n");
-	// if (file->map[i])
-	// {
-	// 	while (file->map[i])
-	// 	{
-	// 		printf("%s\n", file->map[i]);
-	// 		i++;
-	// 	}
-	// }
+	if (file->map[i])
+	{
+		while (file->map[i])
+		{
+			printf("%s\n", file->map[i]);
+			i++;
+		}
+	}
 }
