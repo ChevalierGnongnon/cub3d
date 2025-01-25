@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 13:15:44 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/20 13:28:25 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/25 17:03:23 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ unsigned int	ft_atou(const char *str)
 
 	n = 0;
 	i = 0;
-	while (is_whitespace(str[i]))
+	while (str[i] && is_whitespace(str[i]))
 		i++;
 	while (ft_isdigit(str[i]))
 	{

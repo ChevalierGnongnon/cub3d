@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:54:00 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/25 16:12:13 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/25 16:59:26 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	check_extension(char *map_path)
 void	launch(char *path)
 {
 	t_file		*process;
-	// t_graphics	*graphics;
-	// mlx_t	*mlx = NULL;
+	t_graphics	*graphics;
+	mlx_t	*mlx = NULL;
 	int		fd;
 
 	if (file_check_textures(path) && file_check_rgb(path))
@@ -42,12 +42,12 @@ void	launch(char *path)
 			{
 				display_process(process);
 				flood_fill_process(process);
-				// mlx = mlx_init(130, 130, "gratfwetuwftvr", true);
-				// if (!mlx)
-				// 	return (err_no_return("Mlx is not working / wasn't able to launch"));
-				// graphics = get_graphics(mlx, process);
+				mlx = mlx_init(130, 130, "gratfwetuwftvr", true);
+				if (!mlx)
+					return (err_no_return("Mlx is not working / wasn't able to launch"));
+				graphics = get_graphics(mlx, process);
 				free_file(process);
-				// free_graphics(mlx, graphics);
+				free_graphics(mlx, graphics);
 			}
 			else
 				err_null("File elements are not valid.\n");
