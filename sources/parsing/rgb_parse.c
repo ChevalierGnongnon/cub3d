@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:37:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/25 17:03:05 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/25 17:14:07 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,16 @@ static int	rgb_checker(const char *srgb)
 	i = 0;
 	while (srgb[i])
 	{
-		if (srgb[i] == ',' && srgb[i + 1] == ',')
-			return (0);
+		if (srgb[i] == ',')
+		{
+			if (srgb[i + 1] == ',')
+				return (0);
+			i++;
+			while (is_whitespace(srgb[i]))
+				i++;
+			if (srgb[i] == ',')
+				return (0);
+		}
 		else if (!ft_isdigit(srgb[i]) && !is_whitespace(srgb[i]) && srgb[i] != ',')
 			return (0);
 		i++;

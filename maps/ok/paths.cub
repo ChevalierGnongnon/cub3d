@@ -10,8 +10,8 @@
 
 EA	  images/east.png
 SO    				images/south.png
-	C   220, 1
-F				220, 220			, 220, 1
+	C   220, 1, 2, 34
+F				220, 220, 1, 34
 
 
 
