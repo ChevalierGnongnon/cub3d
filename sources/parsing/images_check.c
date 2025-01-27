@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 10:58:15 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/27 15:25:33 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/27 15:26:41 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static mlx_image_t	*get_image(mlx_t *mlx, const char *path)
 	mlx_texture_t	*texture;
 	mlx_image_t		*image;
 	
+	if (!check_png_extension(path))
+		return (NULL);
 	texture = mlx_load_png(path);
 	if (!texture)
 		return (NULL);
