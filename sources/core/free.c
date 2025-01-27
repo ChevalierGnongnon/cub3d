@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 15:18:35 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/23 15:21:51 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/27 13:42:11 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,14 @@ void	*free_file(t_file *file)
 		free((void *) file->rgb_sky);
 	free(file);
 	return (NULL);
+}
+
+void	free_all(mlx_t *mlx, t_file *file, t_graphics *graphics)
+{
+	if (file)
+		free_file(file);
+	if (graphics)
+		free_graphics(mlx, graphics);
+	if (mlx)
+		mlx_terminate(mlx);
 }

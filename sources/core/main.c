@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:54:00 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/25 16:59:26 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/27 13:42:11 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ void	launch(char *path)
 				if (!mlx)
 					return (err_no_return("Mlx is not working / wasn't able to launch"));
 				graphics = get_graphics(mlx, process);
-				free_file(process);
-				free_graphics(mlx, graphics);
+				free_all(mlx, process, graphics);
 			}
 			else
 				err_null("File elements are not valid.\n");
