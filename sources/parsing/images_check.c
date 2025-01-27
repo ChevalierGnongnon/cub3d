@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 10:58:15 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/27 14:14:05 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/27 15:25:33 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,17 @@ static int check_graphics(t_graphics *graphics)
 	return (1);
 }
 
+static int	check_png_extension(const char *path)
+{
+	int	size;
+
+	size = ft_strlen(path);
+	if (size >= 5 && (path[size - 1] == 'g' && path[size - 2] == 'n'
+			&& path[size - 3] == 'p' && path[size - 4] == '.'))
+		return (1);
+	return (0);
+}
+
 static mlx_image_t	*get_image(mlx_t *mlx, const char *path)
 {
 	mlx_texture_t	*texture;
@@ -41,7 +52,6 @@ static mlx_image_t	*get_image(mlx_t *mlx, const char *path)
 	if (!image)
 		return (NULL);
 	mlx_delete_texture(texture);
-	printf("%u\n", image->width);
 	return (image);
 }
 
