@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 15:18:35 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/27 13:42:11 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/28 16:04:24 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	*free_file(t_file *file)
 	return (NULL);
 }
 
-void	free_all(mlx_t *mlx, t_file *file, t_graphics *graphics)
+void	*free_all(mlx_t *mlx, t_file *file, t_graphics *graphics)
 {
 	if (file)
 		free_file(file);
@@ -71,4 +71,5 @@ void	free_all(mlx_t *mlx, t_file *file, t_graphics *graphics)
 		free_graphics(mlx, graphics);
 	if (mlx)
 		mlx_terminate(mlx);
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/27 13:55:45 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/28 16:04:45 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ unsigned int 		rgb_convert(const char *srgb);
 void		*free_two_dimentional(const char **map);
 void		*free_file(t_file *file);
 void		*free_graphics(mlx_t *mlx, t_graphics *graphics);
-void		free_all(mlx_t *mlx, t_file *file, t_graphics *graphics);
+void		*free_all(mlx_t *mlx, t_file *file, t_graphics *graphics);
 
 /*
  * PARSING ERRORS

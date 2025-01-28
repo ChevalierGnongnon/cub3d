@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:37:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/28 14:17:48 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/28 16:17:10 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,9 @@ int rgb_check(t_rgb *rgb)
 	return (1);
 }
 
-unsigned int rgb_convert(const char *srgb)
+unsigned int rgb_convert(const char *srgb, int *val) // utilise pour erreur
 {
-	t_rgb			*rgb;
+	t_rgb			*
 	unsigned int 	value;
 
 	if (!srgb)
