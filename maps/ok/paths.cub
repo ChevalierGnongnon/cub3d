@@ -2,14 +2,14 @@
 
 
 
- 	NO	images/n.jpg				
-		WE    images/n.jpg
+ 	NO	images/north.png				
+		WE    images/west.png
 
 
 
 
-EA	  images/n.jpg
-SO    				images/n.jpg
+EA	  images/east.png
+SO    				images/west.png
 	C   220, 1, 2, 34
 F				220, 220, 1, 34
 
