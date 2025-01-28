@@ -1,3 +1,10 @@
+ 	NO	images/north.png				
+		WE    images/west.png
+EA	  images/east.png
+SO    				images/west.png
+	C   220, 1, 2, 200
+F				220, 220, 1, 200
+
 111111111111111111111
 101000001000000000001
 101010101011111110001

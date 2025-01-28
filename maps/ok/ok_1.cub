@@ -1,9 +1,9 @@
-NO    aaaa
-WE    bbbb
-EA	  xxxx
-SO    bbbbddd
-F  eeee 
-C  ffff
+ 	NO	images/north.png				
+		WE    images/west.png
+EA	  images/east.png
+SO    				images/west.png
+	C   220, 1, 2, 200
+F				220, 220, 1, 200
 
 1111
 10N1

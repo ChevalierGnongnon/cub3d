@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:52:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/25 16:25:02 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:35:33 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ t_file	*file_process(int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
+	// display_process(file);
 	if (!file->map)
 		return (free_file(file), err_null("Map is invalid or inexistant\n"), NULL);
 	free(line);

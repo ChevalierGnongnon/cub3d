@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 10:58:15 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/28 11:31:56 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:19:52 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ static mlx_image_t	*get_image(mlx_t *mlx, const char *path)
 	image = mlx_texture_to_image(mlx, texture);
 	if (!image)
 		return (NULL);
-	printf("%d %d\n", image->width, image->height);
 	mlx_delete_texture(texture);
 	return (image);
 }
