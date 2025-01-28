@@ -3,7 +3,7 @@ NO    images/north.png
 EA	  images/east.png
 SO    images/south.png
 F     225, 30, 0 
-C     220, 30,
+C     220, 30, 0
 
  111111111     11111111111
 1S000000001   1000000000001
