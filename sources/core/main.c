@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:54:00 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/30 16:07:06 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:44:42 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,13 @@ void	launch(char *path)
 			data = file_process(fd);
 			if (data)
 			{
-				flood_fill_process(data);
-				mlx = mlx_init(130, 130, "gratfwetuwftvr", true);
-				if (!mlx)
-					return (err_no_return("MLX is not working / wasn't able to launch"));
-				graphics = get_graphics(mlx, data);
+				if (flood_fill_process(data))
+				{
+					mlx = mlx_init(130, 130, "gratfwetuwftvr", true);
+					if (!mlx)
+						return (err_no_return("MLX is not working / wasn't able to launch"));
+					graphics = get_graphics(mlx, data);
+				}
 				free_all(NULL, data, NULL);
 			}
 			close(fd);

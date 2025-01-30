@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:27:27 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/30 15:59:57 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:41:37 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	flood_fill(t_pos pos, char **map, int *flag)
 		(*flag) = -1;
 }
 
-int check_bordline (const char *line)
+int check_bordline(const char *line)
 {
 	int	i;
 	
