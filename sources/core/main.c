@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:54:00 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/30 15:43:52 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:53:58 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	check_extension(char *map_path)
 
 void	launch(char *path)
 {
-	t_data		*process;
+	t_data		*data;
 	t_graphics	*graphics;
 	mlx_t	*mlx = NULL;
 	int		fd;
@@ -37,15 +37,15 @@ void	launch(char *path)
 			err_no_return("File is not existing");
 		else
 		{
-			process = file_process(fd);
-			if (process)
+			data = file_process(fd);
+			if (data)
 			{
-				flood_fill_process(process);
+				flood_fill_process(data);
 				mlx = mlx_init(130, 130, "gratfwetuwftvr", true);
 				if (!mlx)
 					return (err_no_return("MLX is not working / wasn't able to launch"));
-				graphics = get_graphics(mlx, process);
-				free_all(mlx, process, graphics);
+				graphics = get_graphics(mlx, data);
+				free_all(mlx, data, graphics);
 			}
 			close(fd);
 		}
