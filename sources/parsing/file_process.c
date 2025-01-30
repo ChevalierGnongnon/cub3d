@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:52:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/30 15:48:24 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:57:15 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	find_key(char *line)
 	return (0);
 }
 
-void	set_img_paths(t_data *file, char *line, int *flag)
+void	set_img_paths(t_data *data, char *line, int *flag)
 {
 	char		*key;
 	size_t		i;
@@ -49,68 +49,68 @@ void	set_img_paths(t_data *file, char *line, int *flag)
 	if (!key)
 		return ;
 	if (key[0] == 'F' && is_whitespace(key[1]))
-		file->rgb_ground = get_value(line, key, i, &cnt);
+		data->rgb_ground = get_value(line, key, i, &cnt);
 	if (key[0] == 'C' && is_whitespace(key[1]))
-		file->rgb_sky = get_value(line, key, i, &cnt);
+		data->rgb_sky = get_value(line, key, i, &cnt);
 	if (!ft_strcmp("NO", key))
-		file->path_north = get_value(line, key, i, &cnt);
+		data->path_north = get_value(line, key, i, &cnt);
 	else if (!ft_strcmp("SO", key))
-		file->path_south = get_value(line, key, i, &cnt);
+		data->path_south = get_value(line, key, i, &cnt);
 	else if (!ft_strcmp("WE", key))
-		file->path_west = get_value(line, key, i, &cnt);
+		data->path_west = get_value(line, key, i, &cnt);
 	else if (!ft_strcmp("EA", key))
-		file->path_east = get_value(line, key, i, &cnt);
+		data->path_east = get_value(line, key, i, &cnt);
 	if (cnt == 6)
 		(*flag) = 1;
 	free(key);
 }
 
-void	file_preset(t_data *file)
+void	data_preset(t_data *data)
 {
-	file->map = NULL;
-	file->path_east = NULL;
-	file->path_north = NULL;
-	file->path_south = NULL;
-	file->path_west = NULL;
-	file->player_start_posX = 0;
-	file->player_start_posX = 0;
-	file->rgb_ground = NULL;
-	file->rgb_sky = NULL;
+	data->map = NULL;
+	data->path_east = NULL;
+	data->path_north = NULL;
+	data->path_south = NULL;
+	data->path_west = NULL;
+	data->player_start_posX = 0;
+	data->player_start_posX = 0;
+	data->rgb_ground = NULL;
+	data->rgb_sky = NULL;
 }
 
-t_data	*fileset(t_data *file, int *flag, int fd)
+t_data	*dataset(t_data *data, int *flag, int fd)
 {
 	char	*line;
 
-	file = ft_calloc(1, sizeof(t_data));
-	if (!file)
+	data = ft_calloc(1, sizeof(t_data));
+	if (!data)
 		return (NULL);
-	file_preset(file);
+	data_preset(data);
 	line = get_next_line(fd);
 	if (line && find_key(line))
-		set_img_paths(file, line, flag);
+		set_img_paths(data, line, flag);
 	free(line);
-	return (file);
+	return (data);
 }
 
 t_data	*file_process(int fd)
 {
-	t_data	*file;
+	t_data	*data;
 	char	*line;
 	int		flag;
 
 	flag = 0;
-	file = NULL;
-	file = fileset(file, &flag, fd);
-	if (!file)
+	data = NULL;
+	data = dataset(data, &flag, fd);
+	if (!data)
 		return (NULL);
 	line = get_next_line(fd);
 	while (line)
 	{
 		if (line && find_key(line))
-			set_img_paths(file, line, &flag);
+			set_img_paths(data, line, &flag);
 		else if (line &&  !is_empty(line) && !find_key(line) && !flag)
-			return (free(line), free_all(NULL, file, NULL), err_null("File is invalid or inexistant"));
+			return (free(line), free_all(NULL, data, NULL), err_null("data is invalid or inexistant"));
 		else if (flag && line)
 		{
 			while (is_empty(line))
@@ -118,17 +118,17 @@ t_data	*file_process(int fd)
 				free(line);
 				line = get_next_line(fd);
 			}
-			file->map = map_recup(fd, line);
+			data->map = map_recup(fd, line);
 			break ;
 		}
 		free(line);
 		line = get_next_line(fd);
 	}
-	if (!file->map)
+	if (!data->map)
 	{
-		free_data(file); 
+		free_data(data); 
 		return (err_null("Map is invalid or inexistant"));
 	}
 	free(line);
-	return (file);
+	return (data);
 }
