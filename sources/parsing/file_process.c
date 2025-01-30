@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:52:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/30 14:15:01 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:48:24 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	find_key(char *line)
 	return (0);
 }
 
-void	set_img_paths(t_file *file, char *line, int *flag)
+void	set_img_paths(t_data *file, char *line, int *flag)
 {
 	char		*key;
 	size_t		i;
@@ -65,7 +65,7 @@ void	set_img_paths(t_file *file, char *line, int *flag)
 	free(key);
 }
 
-void	file_preset(t_file *file)
+void	file_preset(t_data *file)
 {
 	file->map = NULL;
 	file->path_east = NULL;
@@ -78,11 +78,11 @@ void	file_preset(t_file *file)
 	file->rgb_sky = NULL;
 }
 
-t_file	*fileset(t_file *file, int *flag, int fd)
+t_data	*fileset(t_data *file, int *flag, int fd)
 {
 	char	*line;
 
-	file = ft_calloc(1, sizeof(t_file));
+	file = ft_calloc(1, sizeof(t_data));
 	if (!file)
 		return (NULL);
 	file_preset(file);
@@ -93,9 +93,9 @@ t_file	*fileset(t_file *file, int *flag, int fd)
 	return (file);
 }
 
-t_file	*file_process(int fd)
+t_data	*file_process(int fd)
 {
-	t_file	*file;
+	t_data	*file;
 	char	*line;
 	int		flag;
 
@@ -126,7 +126,7 @@ t_file	*file_process(int fd)
 	}
 	if (!file->map)
 	{
-		free_file(file); 
+		free_data(file); 
 		return (err_null("Map is invalid or inexistant"));
 	}
 	free(line);

@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:54:00 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/30 15:31:10 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:43:52 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	check_extension(char *map_path)
 
 void	launch(char *path)
 {
-	t_file		*process;
+	t_data		*process;
 	t_graphics	*graphics;
 	mlx_t	*mlx = NULL;
 	int		fd;

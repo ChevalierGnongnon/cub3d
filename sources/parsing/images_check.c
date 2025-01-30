@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 10:58:15 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/30 13:00:49 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:43:52 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static mlx_image_t	*get_image(mlx_t *mlx, const char *path)
 	return (image);
 }
 
-t_graphics	*get_graphics(mlx_t *mlx, t_file *file)
+t_graphics	*get_graphics(mlx_t *mlx, t_data *file)
 {
 	t_graphics	*imgs;
 	int			checker;

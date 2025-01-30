@@ -6,13 +6,13 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:27:27 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/23 14:57:22 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:43:52 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-static void	get_start_position(char **copy, t_file *file)
+static void	get_start_position(char **copy, t_data *file)
 {
 	int	i;
 	int	j;
@@ -106,7 +106,7 @@ static int check_borders(char **map)
 	return (1);
 }
 
-int	flood_fill_process(t_file *file)
+int	flood_fill_process(t_data *file)
 {
 	t_pos	pos;
 	char	**copy;

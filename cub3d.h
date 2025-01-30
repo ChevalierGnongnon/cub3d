@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/30 15:29:54 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:47:54 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_file
 	const char	*path_west;
 	const char	*rgb_ground;
 	const char	*rgb_sky;
-}	t_file;
+}	t_data;
 
 typedef struct s_player
 {
@@ -71,31 +71,25 @@ typedef struct s_player
 	int	pos_y;
 }	t_player;
 
-// typedef struct s_program
-// {
-// 	t_file 		*file;
-// 	t_graphics	*graphics;
-// }	t_program;
-
 /*
  * PARSING
  */
 const char	*get_value(char *line, char *key, size_t start, int *count);
-t_file		*file_process(int fd);
+t_data		*file_process(int fd);
 const char	**map_recup(int fd, char *line);
 const char	**map_copy(const char **map);
 char		**flood_fill_copy(const char **map);
 int 		mapchecker(const char **map);
-int			file_check_values(t_file *file);
+int			file_check_values(t_data *data);
 void 		flood_fill(t_pos pos, char **map, int *flag);
-int			flood_fill_process(t_file *file);
+int			flood_fill_process(t_data *data);
 int 		get_widthmax(const char **map);
 
 /*
  * Graphics
  */
 
-t_graphics	*get_graphics(mlx_t *mlx, t_file *file);
+t_graphics	*get_graphics(mlx_t *mlx, t_data *data);
 
 /*
  * RGB
@@ -107,9 +101,9 @@ unsigned int 		rgb_convert(const char *srgb, int *checker);
  * FREE
  */
 void		*free_two_dimentional(const char **map);
-void		*free_file(t_file *file);
+void		*free_data(t_data *data);
 void		*free_graphics(mlx_t *mlx, t_graphics *graphics);
-void		*free_all(mlx_t *mlx, t_file *file, t_graphics *graphics);
+void		*free_all(mlx_t *mlx, t_data *data, t_graphics *graphics);
 
 /*
  * PARSING ERRORS
@@ -117,7 +111,7 @@ void		*free_all(mlx_t *mlx, t_file *file, t_graphics *graphics);
 void		*err_null(const char *message);
 int			err_int(const char *message, int err_num);
 void		err_no_return(const char *message);
-void		*file_not_valid(t_file *file, char *line);
+void		*file_not_valid(t_data *data, char *line);
 
 /*
  * CHAR UTILS
@@ -149,6 +143,6 @@ int			file_check_rgb(char *path);
 /*
  * DISPLAY
  */
-void		display_process(t_file *file);
+void		display_process(t_data *data);
 
 #endif
