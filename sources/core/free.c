@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 15:18:35 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/30 15:48:06 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:51:07 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,30 +43,30 @@ void		*free_graphics(mlx_t *mlx, t_graphics *graphics)
 	return (NULL);
 }
 
-void	*free_data(t_data *file)
+void	*free_data(t_data *data)
 {
-	if (file->map)
-		free_two_dimentional(file->map);
-	if (file->path_east)
-		free((void *) file->path_east);
-	if (file->path_north)
-		free((void *) file->path_north);
-	if (file->path_south)
-		free((void *) file->path_south);
-	if (file->path_west)
-		free((void *) file->path_west);
-	if (file->rgb_ground)
-		free((void *) file->rgb_ground);
-	if (file->rgb_sky)
-		free((void *) file->rgb_sky);
-	free(file);
+	if (data->map)
+		free_two_dimentional(data->map);
+	if (data->path_east)
+		free((void *) data->path_east);
+	if (data->path_north)
+		free((void *) data->path_north);
+	if (data->path_south)
+		free((void *) data->path_south);
+	if (data->path_west)
+		free((void *) data->path_west);
+	if (data->rgb_ground)
+		free((void *) data->rgb_ground);
+	if (data->rgb_sky)
+		free((void *) data->rgb_sky);
+	free(data);
 	return (NULL);
 }
 
-void	*free_all(mlx_t *mlx, t_data *file, t_graphics *graphics)
+void	*free_all(mlx_t *mlx, t_data *data, t_graphics *graphics)
 {
-	if (file)
-		free_data(file);
+	if (data)
+		free_data(data);
 	if (graphics)
 		free_graphics(mlx, graphics);
 	if (mlx)
