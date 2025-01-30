@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:37:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/30 16:57:18 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/30 17:10:42 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,19 @@ static int	rgb_checker(const char *srgb)
 			if (srgb[i] == ',')
 				return (0);
 		}
-		else if (!ft_isdigit(srgb[i]) && !is_whitespace(srgb[i]) && srgb[i] != ',')
+		else if (!ft_isdigit(srgb[i]) && !is_whitespace(srgb[i])
+			&& srgb[i] != ',')
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int value_checker(const char **trgb)
+int	value_checker(const char **trgb)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	j = 0;
 	while (trgb[i])
@@ -61,12 +62,12 @@ int value_checker(const char **trgb)
 	return (1);
 }
 
-static t_rgb *rgb_get(const char *srgb)
+static t_rgb	*rgb_get(const char *srgb)
 {
 	const char	**trgb;
 	t_rgb		*rgb;
 	int			i;
-	
+
 	i = 0;
 	trgb = ft_split(srgb, ',');
 	if (!trgb)
@@ -89,7 +90,7 @@ static t_rgb *rgb_get(const char *srgb)
 	return (rgb);
 }
 
-int rgb_check(t_rgb *rgb)
+int	rgb_check(t_rgb *rgb)
 {
 	if (rgb->red < 0 || rgb->red > 255)
 		return (0);
@@ -102,10 +103,10 @@ int rgb_check(t_rgb *rgb)
 	return (1);
 }
 
-unsigned int rgb_convert(const char *srgb, int *checker)
+unsigned int	rgb_convert(const char *srgb, int *checker)
 {
 	t_rgb			*rgb;
-	unsigned int 	value;
+	unsigned int	value;
 
 	if (!srgb)
 	{
