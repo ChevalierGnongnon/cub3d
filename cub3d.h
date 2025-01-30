@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/30 12:54:39 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:29:54 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@
 
 typedef struct s_graphics
 {
-	mlx_image_t	*wall_south;
-	mlx_image_t	*wall_north;
-	mlx_image_t *wall_west;
-	mlx_image_t *wall_east;
+	mlx_image_t				*wall_south;
+	mlx_image_t				*wall_north;
+	mlx_image_t 			*wall_west;
+	mlx_image_t				*wall_east;
 	unsigned int			ground;
 	unsigned int			sky;
 }	t_graphics;
@@ -71,11 +71,11 @@ typedef struct s_player
 	int	pos_y;
 }	t_player;
 
-typedef struct s_program
-{
-	t_file 		*file;
-	t_graphics	*graphics;
-}	t_program;
+// typedef struct s_program
+// {
+// 	t_file 		*file;
+// 	t_graphics	*graphics;
+// }	t_program;
 
 /*
  * PARSING

@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:54:00 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/28 16:09:20 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:31:10 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,12 @@ void	launch(char *path)
 	{
 		fd = open(path, O_RDONLY);
 		if (fd == -1)
-			err_no_return("File is not existing\n");
+			err_no_return("File is not existing");
 		else
 		{
 			process = file_process(fd);
 			if (process)
 			{
-				display_process(process);
 				flood_fill_process(process);
 				mlx = mlx_init(130, 130, "gratfwetuwftvr", true);
 				if (!mlx)
@@ -48,13 +47,11 @@ void	launch(char *path)
 				graphics = get_graphics(mlx, process);
 				free_all(mlx, process, graphics);
 			}
-			// else
-			// 	err_null("File elements are not valid.");
 			close(fd);
 		}
 	}
 	else
-		err_null("File elements  AAAAAA are not valid.\n");
+		err_null("File elements are not valid.");
 }
 
 int	main(int argc, char **argv)

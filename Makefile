@@ -3,8 +3,7 @@ CC = cc
 CFLAGS = -I. -Wall -Wextra -Werror -g3
 OFLAGS = -I. -Wall -Wextra -Werror -g3
 
-FILES = core/display \
-	core/free \
+FILES = core/free \
 	core/main \
 	parsing/error_parsing \
 	parsing/file_process \
