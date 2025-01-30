@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/28 16:04:45 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/30 12:54:39 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ t_graphics	*get_graphics(mlx_t *mlx, t_file *file);
  * RGB
  */
 
-unsigned int 		rgb_convert(const char *srgb);
+unsigned int 		rgb_convert(const char *srgb, int *checker);
 
 /*
  * FREE

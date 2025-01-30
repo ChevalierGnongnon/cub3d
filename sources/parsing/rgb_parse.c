@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:37:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/28 16:17:10 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/30 13:03:30 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,27 +102,36 @@ int rgb_check(t_rgb *rgb)
 	return (1);
 }
 
-unsigned int rgb_convert(const char *srgb, int *val) // utilise pour erreur
+unsigned int rgb_convert(const char *srgb, int *checker)
 {
-	t_rgb			*
+	t_rgb			*rgb;
 	unsigned int 	value;
 
 	if (!srgb)
-		return (err_int("rgb entry is missing or invalid.", -1));
+	{
+		(*checker) = -1;
+		return (0);
+	}
 	if (rgb_checker(srgb))
 	{
 		rgb = rgb_get(srgb);
 		if (!rgb)
-			return (err_int("rgb entry is missing or invalid.", -1));
+		{
+			(*checker) = -1;
+			return (0);
+		}
 		if (!rgb_check(rgb))
 		{
 			free(rgb);
-			return (err_int("rgb entry is missing or invalid.", -1));
+			(*checker) = -1;
+			return (0);
 		}
 		value = 0;
 		value += rgb->red << 24 | rgb->green << 16 | rgb->blue << 8 | rgb->alpha;
+		printf("%d %d %d %d\n", rgb->red, rgb->green, rgb->blue, rgb->alpha);
 		free(rgb);
 		return (value);
 	}
-	return (err_int("rgb entry is missing or invalid.\n", -1));
+	(*checker) = -1;
+	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 10:58:15 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/28 14:19:52 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/30 13:00:49 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-static int check_graphics(t_graphics *graphics)
+static int check_graphics(t_graphics *graphics, int *checker)
 {
 	if (graphics->wall_east == NULL
 		|| (graphics->wall_east->width != 128 && graphics->wall_east->height != 128))
@@ -26,6 +26,8 @@ static int check_graphics(t_graphics *graphics)
 	if (graphics->wall_south == NULL
 		|| (graphics->wall_south->width != 128 && graphics->wall_south->height != 128))
 		return (err_int("South wall is missing or in wrong shape", 0));
+	if ((*checker) == -1)
+		return (err_int("Rgb value is missing or invalid", 0));
 	return (1);
 }
 
@@ -60,7 +62,9 @@ static mlx_image_t	*get_image(mlx_t *mlx, const char *path)
 t_graphics	*get_graphics(mlx_t *mlx, t_file *file)
 {
 	t_graphics	*imgs;
+	int			checker;
 
+	checker = 0;
 	imgs = ft_calloc(1, sizeof(t_graphics));
 	if (!imgs)
 		return (NULL);
@@ -68,9 +72,9 @@ t_graphics	*get_graphics(mlx_t *mlx, t_file *file)
 	imgs->wall_north = get_image(mlx, file->path_north);
 	imgs->wall_east = get_image(mlx, file->path_east);
 	imgs->wall_west = get_image(mlx, file->path_west);
-	imgs->sky = rgb_convert(file->rgb_sky);
-	imgs->ground = rgb_convert(file->rgb_ground);
-	if (!check_graphics(imgs))
+	imgs->sky = rgb_convert(file->rgb_sky, &checker);
+	imgs->ground = rgb_convert(file->rgb_ground, &checker);
+	if (!check_graphics(imgs, &checker))
 		return (NULL);
 	return (imgs);
 }
