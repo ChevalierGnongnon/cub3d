@@ -6,13 +6,13 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:27:27 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/30 15:43:52 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:59:57 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-static void	get_start_position(char **copy, t_data *file)
+static void	get_start_position(char **copy, t_data *data)
 {
 	int	i;
 	int	j;
@@ -25,8 +25,8 @@ static void	get_start_position(char **copy, t_data *file)
 		{
 			if (is_player_orientation(copy[i][j]))
 			{
-				file->player_start_posX = i;
-				file->player_start_posY = j;
+				data->player_start_posX = i;
+				data->player_start_posY = j;
 			}
 			j++;
 		}
@@ -106,7 +106,7 @@ static int check_borders(char **map)
 	return (1);
 }
 
-int	flood_fill_process(t_data *file)
+int	flood_fill_process(t_data *data)
 {
 	t_pos	pos;
 	char	**copy;
@@ -115,12 +115,12 @@ int	flood_fill_process(t_data *file)
 
 	i = 0;
 	flag = 0;
-	copy = flood_fill_copy(file->map);
+	copy = flood_fill_copy(data->map);
 	if (!copy)
 		return (0);
-	get_start_position(copy, file);
-	pos.x = file->player_start_posX;
-	pos.y = file->player_start_posY;
+	get_start_position(copy, data);
+	pos.x = data->player_start_posX;
+	pos.y = data->player_start_posY;
 	flood_fill(pos, copy, &flag);
 	if (flag == -1 || !check_borders(copy))
 	{

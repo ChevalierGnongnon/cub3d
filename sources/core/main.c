@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:54:00 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/30 15:53:58 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:07:06 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	launch(char *path)
 {
 	t_data		*data;
 	t_graphics	*graphics;
-	mlx_t	*mlx = NULL;
+	mlx_t		*mlx;
 	int		fd;
 
 	if (file_check_textures(path) && file_check_rgb(path))
@@ -45,7 +45,7 @@ void	launch(char *path)
 				if (!mlx)
 					return (err_no_return("MLX is not working / wasn't able to launch"));
 				graphics = get_graphics(mlx, data);
-				free_all(mlx, data, graphics);
+				free_all(NULL, data, NULL);
 			}
 			close(fd);
 		}
