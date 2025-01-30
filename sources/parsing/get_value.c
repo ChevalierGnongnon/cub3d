@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 12:09:30 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/15 15:48:49 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/30 17:01:08 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static const char	*get_rgb(char *line, int start, int end)
 const char	*get_value(char *line, char *key, size_t start, int *count)
 {
 	int	end;
-	
+
 	(*count)++;
 	while (line[start] && !is_whitespace(line[start]))
 		start++;
@@ -66,7 +66,7 @@ const char	*get_value(char *line, char *key, size_t start, int *count)
 	if (start == ft_strlen(line))
 		return (NULL);
 	end = start;
-	if (!ft_strcmp(key, "C ") || !ft_strcmp(key, "F ") 
+	if (!ft_strcmp(key, "C ") || !ft_strcmp(key, "F ")
 		|| !ft_strcmp(key, "C\t") || !ft_strcmp(key, "F\t"))
 		return (get_rgb(line, start, end));
 	if (!check_line(line, start))

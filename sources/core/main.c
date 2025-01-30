@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:54:00 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/30 16:44:42 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:59:14 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	launch(char *path)
 	t_data		*data;
 	t_graphics	*graphics;
 	mlx_t		*mlx;
-	int		fd;
+	int			fd;
 
 	if (file_check_textures(path) && file_check_rgb(path))
 	{

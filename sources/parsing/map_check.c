@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:15:55 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/09 13:57:58 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/01/30 17:05:36 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ static int	charschecker(const char **map)
 	return (0);
 }
 
-int check_mapsize(const char **map)
+int	check_mapsize(const char **map)
 {
-	int area;
+	int	area;
 	int	i;
 	int	j;
 
@@ -51,28 +51,25 @@ int check_mapsize(const char **map)
 		j++;
 	area = i * j;
 	if (area > 5000)
-	{
-		
 		return (0);
-	}
 	return (1);
 }
 
-int is_empty(const char *line)
+int	is_empty(const char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line[i])
 	{
-		if(!is_whitespace(line[i]))
+		if (!is_whitespace(line[i]))
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-static int checklines(const char **map)
+static int	checklines(const char **map)
 {
 	int	i;
 
@@ -94,10 +91,9 @@ static int checklines(const char **map)
 	return (1);
 }
 
-int mapchecker(const char **map)
+int	mapchecker(const char **map)
 {
 	if (charschecker(map) || !check_mapsize(map) || !checklines(map))
 		return (0);
 	return (1);
 }
-
