@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 10:54:59 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/10 18:23:13 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/02/01 16:49:50 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,13 @@ int	is_forbidden(char c)
 	if (c != '1' && c != '0' && !is_space(c) && !is_player_orientation(c))
 		return (1);
 	return (0);
+}
+
+int	is_accessible(char element)
+{
+	if (is_whitespace(element))
+		return (-1);
+	if (element == '1' || element == '2')
+		return (0);
+	return (1);
 }

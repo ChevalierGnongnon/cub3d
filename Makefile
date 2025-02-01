@@ -7,6 +7,7 @@ FILES = core/free \
 	core/main \
 	parsing/error_parsing \
 	parsing/file_process \
+	parsing/flood_check \
 	parsing/flood_fill \
 	parsing/get_map \
 	parsing/get_value \

@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:52:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/02/01 15:24:32 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/02/01 16:40:55 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,25 +93,6 @@ t_data	*dataset(t_data *data, int *flag, int fd)
 	return (data);
 }
 
-void	pass_empty_lines(t_data *data, char *line, int fd)
-{
-	while (is_empty(line))
-	{
-		free(line);
-		line = get_next_line(fd);
-	}
-	data->map = map_recup(fd, line);
-	free(line);
-}
-
-void	*error_handling(t_data	*data, char *line)
-{
-	if (line)
-		free(line);
-	free_all(NULL, data, NULL);
-	return (err_null("data is invalid or inexistant"));
-}
-
 t_data	*file_process(int fd)
 {
 	t_data	*data;
@@ -128,17 +109,32 @@ t_data	*file_process(int fd)
 	{
 		if (line && find_key(line))
 			set_img_paths(data, line, &flag);
-		else if (line && !is_empty(line) && !find_key(line) && !flag)
-			return (error_handling(data, line));
+		else if (line &&  !is_empty(line) && !find_key(line) && !flag)
+			return (free(line), free_all(NULL, data, NULL), err_null("data is invalid or inexistant"));
 		else if (flag && line)
 		{
-			pass_empty_lines(data, line, fd);
+			while (is_empty(line))
+			{
+				free(line);
+				line = get_next_line(fd);
+			}
+			data->map = map_recup(fd, line);
 			break ;
 		}
 		free(line);
 		line = get_next_line(fd);
 	}
+	int k = 0;
+	while (data->map[k])
+	{
+		printf("%s\n", data->map[k]);
+		k++;
+	}
 	if (!data->map)
-		return (error_handling(data, line));
+	{
+		free_data(data); 
+		return (err_null("Map is invalid or inexistant"));
+	}
+	free(line);
 	return (data);
 }

@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/02/01 12:42:55 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/02/01 16:46:58 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ int			file_check_values(t_data *data);
 void 		flood_fill(t_pos pos, char **map, int *flag);
 int			flood_fill_process(t_data *data);
 int 		get_widthmax(const char **map);
+int			check_borders(char **map);
+int			check_bordline(const char *line);
 
 /*
  * Graphics
@@ -119,7 +121,7 @@ void		*file_not_valid(t_data *data, char *line);
 int			is_whitespace(char c);
 int			is_player_orientation(char c);
 int			is_forbidden(char c);
-
+int			is_accessible(char element);
 /*
  * STRING UTILS
  */

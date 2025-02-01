@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:27:27 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/02/01 14:24:25 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/02/01 16:49:44 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,6 @@ static void	get_start_position(char **copy, t_data *data)
 		}
 		i++;
 	}
-}
-
-int	is_accessible(char element)
-{
-	if (is_whitespace(element))
-		return (-1);
-	if (element == '1' || element == '2')
-		return (0);
-	return (1);
 }
 
 void	check_other_zone(char **map, int *flag)
@@ -97,38 +88,6 @@ void	flood_fill(t_pos pos, char **map, int *flag)
 	}
 	else
 		(*flag) = -1;
-}
-
-int check_bordline(const char *line)
-{
-	int	i;
-	
-	i = 0;
-	while (line[i])
-	{
-		if (line[i] == '2')
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-static int check_borders(char **map)
-{
-	int	i;
-
-	i = 0;
-	if (!check_bordline(map[i]))
-		return (0);
-	while (i < map_size((const char **) map) - 1)
-	{
-		if (map[i][0] == '2' || map[i][ft_strlen(map[i]) - 1] == '2')
-			return (0);
-		i++;
-	}
-	if (!check_bordline(map[i]))
-		return (0);
-	return (1);
 }
 
 int	flood_fill_process(t_data *data)
