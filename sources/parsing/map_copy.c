@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:43:09 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/23 14:53:18 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/02/01 14:34:43 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static void	line_copy(const char **map, char **copy, int *j, int i)
 
 static void	fill_with_spaces(const char **map, char **copy, int j, int i)
 {
-	int max;
-	
+	int	max;
+
 	max = get_widthmax(map);
 	while (j < max)
 	{
@@ -40,7 +40,7 @@ char	**flood_fill_copy(const char **map)
 	int		max;
 	int		i;
 	int		j;
-	
+
 	i = 0;
 	max = get_widthmax(map);
 	copy = ft_calloc(sizeof(char *), map_size(map) + 1);
@@ -65,9 +65,9 @@ const char	**map_copy(const char **map)
 	const char	**chunked;
 	int			i;
 	int			j;
-	
+
 	i = 0;
-	copy = ft_calloc(sizeof(char *),  map_size(map) + 1);
+	copy = ft_calloc(sizeof(char *), map_size(map) + 1);
 	if (!copy)
 		return (NULL);
 	while (map[i])
