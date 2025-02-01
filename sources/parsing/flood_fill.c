@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 14:27:27 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/02/01 12:18:28 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/02/01 14:24:25 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,34 @@ int	is_accessible(char element)
 	if (element == '1' || element == '2')
 		return (0);
 	return (1);
+}
+
+void	check_other_zone(char **map, int *flag)
+{
+	t_pos	*pos;
+	int		i;
+	int		j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == '0')
+			{
+				pos = ft_calloc(sizeof(t_pos), 1);
+				if (!pos)
+					(*flag) = -1;
+				pos->x = i;
+				pos->y = j;
+				flood_fill((*pos), map, flag);
+				free(pos);
+			}
+			j++;
+		}
+		i++;
+	}
 }
 
 void	flood_fill(t_pos pos, char **map, int *flag)
@@ -119,6 +147,7 @@ int	flood_fill_process(t_data *data)
 	pos.x = data->player_start_posX;
 	pos.y = data->player_start_posY;
 	flood_fill(pos, copy, &flag);
+	check_other_zone(copy, &flag);
 	if (flag == -1 || !check_borders(copy))
 	{
 		free_two_dimentional((const char **) copy);
