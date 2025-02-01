@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:15:37 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/30 16:09:35 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/02/01 14:36:31 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ static const char	**map_edit(const char **map, char *line)
 {
 	const char	**new_map;
 	int			i;
-	
+
 	i = 0;
 	new_map = ft_calloc(sizeof(char *), map_size(map) + 2);
-	if(!new_map)
+	if (!new_map)
 		return (NULL);
 	while (map[i] != NULL)
 	{
@@ -39,7 +39,6 @@ const char	**map_recup(int fd, char *line)
 	const char	**map;
 	const char	**copy;
 	char		*next;
-	
 
 	map = ft_calloc(2, sizeof(char *));
 	if (!map)
