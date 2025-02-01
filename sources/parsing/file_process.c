@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:52:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/02/01 16:40:55 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/02/01 17:10:13 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ t_data	*file_process(int fd)
 	t_data	*data;
 	char	*line;
 	int		flag;
+	int		k;
 
 	flag = 0;
 	data = NULL;
@@ -109,8 +110,12 @@ t_data	*file_process(int fd)
 	{
 		if (line && find_key(line))
 			set_img_paths(data, line, &flag);
-		else if (line &&  !is_empty(line) && !find_key(line) && !flag)
-			return (free(line), free_all(NULL, data, NULL), err_null("data is invalid or inexistant"));
+		else if (line && !is_empty(line) && !find_key(line) && !flag)
+		{
+			free(line);
+			free_all(NULL, data, NULL);
+			return (err_null("data is invalid or inexistant"));
+		}
 		else if (flag && line)
 		{
 			while (is_empty(line))
@@ -124,7 +129,7 @@ t_data	*file_process(int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
-	int k = 0;
+	k = 0;
 	while (data->map[k])
 	{
 		printf("%s\n", data->map[k]);
@@ -132,7 +137,7 @@ t_data	*file_process(int fd)
 	}
 	if (!data->map)
 	{
-		free_data(data); 
+		free_data(data);
 		return (err_null("Map is invalid or inexistant"));
 	}
 	free(line);
