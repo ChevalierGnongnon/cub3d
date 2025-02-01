@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 10:58:15 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/30 15:43:52 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/02/01 12:26:07 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static mlx_image_t	*get_image(mlx_t *mlx, const char *path)
 	return (image);
 }
 
-t_graphics	*get_graphics(mlx_t *mlx, t_data *file)
+t_graphics	*get_graphics(mlx_t *mlx, t_data *data)
 {
 	t_graphics	*imgs;
 	int			checker;
@@ -68,12 +68,12 @@ t_graphics	*get_graphics(mlx_t *mlx, t_data *file)
 	imgs = ft_calloc(1, sizeof(t_graphics));
 	if (!imgs)
 		return (NULL);
-	imgs->wall_south = get_image(mlx, file->path_south);
-	imgs->wall_north = get_image(mlx, file->path_north);
-	imgs->wall_east = get_image(mlx, file->path_east);
-	imgs->wall_west = get_image(mlx, file->path_west);
-	imgs->sky = rgb_convert(file->rgb_sky, &checker);
-	imgs->ground = rgb_convert(file->rgb_ground, &checker);
+	imgs->wall_south = get_image(mlx, data->path_south);
+	imgs->wall_north = get_image(mlx, data->path_north);
+	imgs->wall_east = get_image(mlx, data->path_east);
+	imgs->wall_west = get_image(mlx, data->path_west);
+	imgs->sky = rgb_convert(data->rgb_sky, &checker);
+	imgs->ground = rgb_convert(data->rgb_ground, &checker);
 	if (!check_graphics(imgs, &checker))
 		return (NULL);
 	return (imgs);
