@@ -17,6 +17,7 @@ FILES = core/free \
 	utils/char \
 	utils/file_check \
 	utils/map \
+	utils/rgb \
 	utils/strings \
 
 SOURCES = $(foreach f, $(FILES), sources/$(f).c)

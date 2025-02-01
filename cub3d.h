@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/01/30 15:47:54 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/02/01 12:42:55 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,12 @@ const char	**map_chunk(const char **map);
  */
 int			file_check_textures(char *path);
 int			file_check_rgb(char *path);
+
+/*
+ * RGB UTILS
+ */
+int			rgb_checker(const char *srgb);
+int			rgb_check(t_rgb *rgb);
 
 /*
  * DISPLAY

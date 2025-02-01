@@ -6,36 +6,11 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:37:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/01/30 17:10:42 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/02/01 12:44:47 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
-
-static int	rgb_checker(const char *srgb)
-{
-	int	i;
-
-	i = 0;
-	while (srgb[i])
-	{
-		if (srgb[i] == ',')
-		{
-			if (srgb[i + 1] == ',')
-				return (0);
-			i++;
-			while (is_whitespace(srgb[i]))
-				i++;
-			if (srgb[i] == ',')
-				return (0);
-		}
-		else if (!ft_isdigit(srgb[i]) && !is_whitespace(srgb[i])
-			&& srgb[i] != ',')
-			return (0);
-		i++;
-	}
-	return (1);
-}
 
 int	value_checker(const char **trgb)
 {
@@ -90,48 +65,39 @@ static t_rgb	*rgb_get(const char *srgb)
 	return (rgb);
 }
 
-int	rgb_check(t_rgb *rgb)
+static int	transform_into_value(const char *srgb, int *checker)
 {
-	if (rgb->red < 0 || rgb->red > 255)
+	t_rgb	*rgb;
+	int		value;
+
+	value = 0;
+	rgb = rgb_get(srgb);
+	if (!rgb)
+	{
+		(*checker) = -1;
 		return (0);
-	if (rgb->green < 0 || rgb->green > 255)
+	}
+	if (!rgb_check(rgb))
+	{
+		free(rgb);
+		(*checker) = -1;
 		return (0);
-	if (rgb->blue < 0 || rgb->blue > 255)
-		return (0);
-	if (rgb->alpha < 0 || rgb->alpha > 255)
-		return (0);
-	return (1);
+	}
+	value += rgb->red << 24 | rgb->green << 16 | rgb->blue << 8 | rgb->alpha;
+	free(rgb);
+	printf("%x\n", value);
+	return (value);
 }
 
 unsigned int	rgb_convert(const char *srgb, int *checker)
 {
-	t_rgb			*rgb;
-	unsigned int	value;
-
 	if (!srgb)
 	{
 		(*checker) = -1;
 		return (0);
 	}
 	if (rgb_checker(srgb))
-	{
-		rgb = rgb_get(srgb);
-		if (!rgb)
-		{
-			(*checker) = -1;
-			return (0);
-		}
-		if (!rgb_check(rgb))
-		{
-			free(rgb);
-			(*checker) = -1;
-			return (0);
-		}
-		value = 0;
-		value += rgb->red << 24 | rgb->green << 16 | rgb->blue << 8 | rgb->alpha;
-		free(rgb);
-		return (value);
-	}
+		return (transform_into_value(srgb, checker));
 	(*checker) = -1;
 	return (0);
 }
