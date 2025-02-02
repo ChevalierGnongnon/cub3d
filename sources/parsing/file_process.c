@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:52:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/02/01 17:10:13 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/02/02 11:01:09 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,11 +118,13 @@ t_data	*file_process(int fd)
 		}
 		else if (flag && line)
 		{
-			while (is_empty(line))
+			while (line && is_empty(line))
 			{
 				free(line);
 				line = get_next_line(fd);
 			}
+			if (!line)
+				return (err_null("Map is missing"));
 			data->map = map_recup(fd, line);
 			break ;
 		}
