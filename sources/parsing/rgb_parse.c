@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:37:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/02/02 15:10:12 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/02/02 15:13:36 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,22 +67,21 @@ static t_rgb	*rgb_get(const char *srgb)
 
 static int	check_end(const char *srgb)
 {
-	int i;
+	int	i;
 
 	i = ft_strlen(srgb);
 	while (is_whitespace(srgb[i]) || srgb[i] == '\0')
 		i--;
-	if (srgb[i] ==',')
+	if (srgb[i] == ',')
 		return (0);
 	return (1);
-	
 }
 
 static int	transform_into_value(const char *srgb, int *checker)
 {
 	t_rgb	*rgb;
 	int		value;
-	
+
 	value = 0;
 	rgb = rgb_get(srgb);
 	if (!check_end(srgb))
