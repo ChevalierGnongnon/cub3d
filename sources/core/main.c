@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:54:00 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/02/02 10:46:33 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/02/02 11:17:46 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	check_extension(char *map_path)
 
 	size = ft_strlen(map_path);
 	
-	if (size >= 6 && (map_path[size - 1] == 'b' && map_path[size - 2] == 'u'
+	if (size >= 5 && (map_path[size - 1] == 'b' && map_path[size - 2] == 'u'
 			&& map_path[size - 3] == 'c' && map_path[size - 4] == '.'
 			&& ft_isalnum(map_path[size - 5])))
 		return (1);
@@ -48,7 +48,8 @@ void	launch(char *path)
 					if (!mlx)
 						return (err_no_return("MLX is not working / wasn't able to launch"));
 					graphics = get_graphics(mlx, data);
-					free_graphics(mlx, graphics);
+					if (graphics)
+						free_graphics(mlx, graphics);
 					mlx_terminate(mlx);
 				}
 				free_all(NULL, data, NULL);

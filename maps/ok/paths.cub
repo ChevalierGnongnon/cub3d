@@ -6,7 +6,7 @@
 		WE    images/west.png
 EA	  images/east.png
 SO    				images/west.png
-	C   220, 1, 2, 200
+	C   256, 255, 255
 F				220,220, 222,200
 
 1111
