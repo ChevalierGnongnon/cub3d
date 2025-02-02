@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 10:58:15 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/02/02 13:10:28 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/02/02 14:54:22 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,6 @@ t_graphics	*get_graphics(t_data *data)
 	imgs->sky = rgb_convert(data->rgb_sky, &checker);
 	imgs->ground = rgb_convert(data->rgb_ground, &checker);
 	if (!check_graphics(imgs, &checker))
-		return (NULL);
+		return (free_graphics(imgs));
 	return (imgs);
 }

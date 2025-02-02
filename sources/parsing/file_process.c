@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:52:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/02/02 11:09:30 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/02/02 14:58:29 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,13 @@ t_data	*dataset(t_data *data, int *flag, int fd)
 	return (data);
 }
 
+void	*error_handler(t_data *data, char *line)
+{
+	free(line);
+	free_all(NULL, data, NULL);
+	return (err_null("data is invalid or inexistant"));
+}
+
 t_data	*file_process(int fd)
 {
 	t_data	*data;
@@ -111,11 +118,7 @@ t_data	*file_process(int fd)
 		if (line && find_key(line))
 			set_img_paths(data, line, &flag);
 		else if (line && !is_empty(line) && !find_key(line) && !flag)
-		{
-			free(line);
-			free_all(NULL, data, NULL);
-			return (err_null("data is invalid or inexistant"));
-		}
+			return (error_handler(data, line));
 		else if (flag && line)
 		{
 			while (line && is_empty(line))
