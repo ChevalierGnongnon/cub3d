@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:37:38 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/02/02 15:00:19 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/02/02 15:10:12 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,8 @@ static int	check_end(const char *srgb)
 	int i;
 
 	i = ft_strlen(srgb);
-	printf("%d\n", i);
 	while (is_whitespace(srgb[i]) || srgb[i] == '\0')
-	{
-		printf("'%c'\n", srgb[i]);
 		i--;
-	}
-	printf("%d\n", i);
 	if (srgb[i] ==',')
 		return (0);
 	return (1);
@@ -107,8 +102,8 @@ static int	transform_into_value(const char *srgb, int *checker)
 		return (0);
 	}
 	value += rgb->red << 24 | rgb->green << 16 | rgb->blue << 8 | rgb->alpha;
-	free(rgb);
 	printf("%x\n", value);
+	free(rgb);
 	return (value);
 }
 
