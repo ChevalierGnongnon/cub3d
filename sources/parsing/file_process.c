@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:52:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/02/02 11:06:44 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/02/02 11:09:30 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ t_data	*file_process(int fd)
 	t_data	*data;
 	char	*line;
 	int		flag;
-	// int		k;
+	int		k;
 
 	flag = 0;
 	data = NULL;
@@ -131,12 +131,12 @@ t_data	*file_process(int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
-	// k = 0;
-	// while (data->map[k])
-	// {
-	// 	printf("%s\n", data->map[k]);
-	// 	k++;
-	// }
+	k = 0;
+	while (data->map[k])
+	{
+		printf("%s\n", data->map[k]);
+		k++;
+	}
 	if (!data->map)
 	{
 		free_data(data);
