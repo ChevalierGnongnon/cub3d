@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:54:00 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/02/01 17:03:58 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/02/02 10:46:33 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ int	check_extension(char *map_path)
 	int	size;
 
 	size = ft_strlen(map_path);
-	if (size >= 5 && (map_path[size - 1] == 'b' && map_path[size - 2] == 'u'
-			&& map_path[size - 3] == 'c' && map_path[size - 4] == '.'))
+	
+	if (size >= 6 && (map_path[size - 1] == 'b' && map_path[size - 2] == 'u'
+			&& map_path[size - 3] == 'c' && map_path[size - 4] == '.'
+			&& ft_isalnum(map_path[size - 5])))
 		return (1);
 	return (0);
 }
