@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/02/02 13:10:49 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/02/02 16:39:46 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include <X11/X.h>
 # include "./MLX42/include/MLX42/MLX42.h"
 # include "libft/sources/libft.h"
+
 
 typedef struct s_graphics
 {
@@ -65,6 +66,13 @@ typedef struct s_data
 	const char	*rgb_sky;
 }	t_data;
 
+typedef struct s_file_process
+{
+	t_data	*data;
+	char	*line;
+	int		flag;
+}	t_file_process;
+
 /*
  * PARSING
  */
@@ -80,6 +88,10 @@ int			flood_fill_process(t_data *data);
 int 		get_widthmax(const char **map);
 int			check_borders(char **map);
 int			check_bordline(const char *line);
+t_data		*dataset(int *flag, int fd);
+int			find_key(char *line);
+void		set_img_paths(t_data *data, char *line, int *flag);
+void		*error_handler(t_data *data, char *line);
 
 /*
  * Graphics

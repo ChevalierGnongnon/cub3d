@@ -9,6 +9,7 @@ FILES = core/free \
 	parsing/file_process \
 	parsing/flood_check \
 	parsing/flood_fill \
+	parsing/get_data \
 	parsing/get_map \
 	parsing/get_value \
 	parsing/images_check \

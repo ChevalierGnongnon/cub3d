@@ -6,145 +6,75 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:52:47 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/02/02 14:58:29 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/02/02 16:39:22 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-int	find_key(char *line)
+char	*path_empty_lines(char *line, int fd)
 {
-	char	*key;
-	int		i;
-
-	i = 0;
-	while (is_whitespace(line[i]))
-		i++;
-	key = ft_substr(line, i, 2);
-	if (!key)
-		return (0);
-	if ((!ft_strcmp("NO", key) || !ft_strcmp("SO", key)
-			|| !ft_strcmp("WE", key) || !ft_strcmp("EA", key))
-		&& (line[i + 2] || is_whitespace(line[i + 2])))
-		return (free(key), 1);
-	free(key);
-	key = ft_substr(line, i, 1);
-	if ((!ft_strcmp("F", key) || !ft_strcmp("C", key))
-		&& (line[i + 1] || is_whitespace(line[i + 1])))
-		return (free(key), 1);
-	free(key);
-	return (0);
+	while (line && is_empty(line))
+	{
+		free(line);
+		line = get_next_line(fd);
+	}
+	return (line);
 }
 
-void	set_img_paths(t_data *data, char *line, int *flag)
+t_file_process	file_process_init(int fd)
 {
-	char		*key;
-	size_t		i;
-	static int	cnt = 0;
+	t_file_process	file;
 
-	i = 0;
-	while (is_whitespace(line[i]))
-		i++;
-	key = ft_substr(line, i, 2);
-	if (!key)
-		return ;
-	if (key[0] == 'F' && is_whitespace(key[1]))
-		data->rgb_ground = get_value(line, key, i, &cnt);
-	if (key[0] == 'C' && is_whitespace(key[1]))
-		data->rgb_sky = get_value(line, key, i, &cnt);
-	if (!ft_strcmp("NO", key))
-		data->path_north = get_value(line, key, i, &cnt);
-	else if (!ft_strcmp("SO", key))
-		data->path_south = get_value(line, key, i, &cnt);
-	else if (!ft_strcmp("WE", key))
-		data->path_west = get_value(line, key, i, &cnt);
-	else if (!ft_strcmp("EA", key))
-		data->path_east = get_value(line, key, i, &cnt);
-	if (cnt == 6)
-		(*flag) = 1;
-	free(key);
+	file.flag = 0;
+	file.data = dataset(&file.flag, fd);
+	if (!file.data)
+		return (file);
+	file.line = get_next_line(fd);
+	return (file);
 }
 
-void	data_preset(t_data *data)
+t_data	*file_process_init_and_check(int fd, t_file_process *file)
 {
-	data->map = NULL;
-	data->path_east = NULL;
-	data->path_north = NULL;
-	data->path_south = NULL;
-	data->path_west = NULL;
-	data->player_start_posX = 0;
-	data->player_start_posX = 0;
-	data->rgb_ground = NULL;
-	data->rgb_sky = NULL;
-}
-
-t_data	*dataset(t_data *data, int *flag, int fd)
-{
-	char	*line;
-
-	data = ft_calloc(1, sizeof(t_data));
-	if (!data)
+	*file = file_process_init(fd);
+	if (!file->data)
 		return (NULL);
-	data_preset(data);
-	line = get_next_line(fd);
-	if (line && find_key(line))
-		set_img_paths(data, line, flag);
-	free(line);
-	return (data);
+	return (file->data);
 }
 
-void	*error_handler(t_data *data, char *line)
+t_data	*file_process_loop(int fd, t_file_process *file)
 {
-	free(line);
-	free_all(NULL, data, NULL);
-	return (err_null("data is invalid or inexistant"));
+	while (file->line)
+	{
+		if (file->line && find_key(file->line))
+			set_img_paths(file->data, file->line, &file->flag);
+		else if (file->line && !is_empty(file->line)
+			&& !find_key(file->line) && !file->flag)
+			return (error_handler(file->data, file->line));
+		else if (file->flag && file->line)
+		{
+			file->line = path_empty_lines(file->line, fd);
+			if (!file->line)
+				return (err_null("Map is missing"));
+			file->data->map = map_recup(fd, file->line);
+			break ;
+		}
+		free(file->line);
+		file->line = get_next_line(fd);
+	}
+	if (!file->data->map)
+		return (free_data(file->data),
+			err_null("Map is invalid or inexistant"));
+	return (free(file->line), file->data);
 }
 
 t_data	*file_process(int fd)
 {
-	t_data	*data;
-	char	*line;
-	int		flag;
-	int		k;
+	t_file_process	file;
+	t_data			*data;
 
-	flag = 0;
-	data = NULL;
-	data = dataset(data, &flag, fd);
+	data = file_process_init_and_check(fd, &file);
 	if (!data)
 		return (NULL);
-	line = get_next_line(fd);
-	while (line)
-	{
-		if (line && find_key(line))
-			set_img_paths(data, line, &flag);
-		else if (line && !is_empty(line) && !find_key(line) && !flag)
-			return (error_handler(data, line));
-		else if (flag && line)
-		{
-			while (line && is_empty(line))
-			{
-				free(line);
-				line = get_next_line(fd);
-			}
-			if (!line)
-				return (err_null("Map is missing"));
-			data->map = map_recup(fd, line);
-			break ;
-		}
-		free(line);
-		line = get_next_line(fd);
-	}
-	k = 0;
-	while (data->map[k])
-	{
-		printf("%s\n", data->map[k]);
-		k++;
-	}
-	if (!data->map)
-	{
-		free_data(data);
-		return (err_null("Map is invalid or inexistant"));
-	}
-	free(line);
-	return (data);
+	return (file_process_loop(fd, &file));
 }
