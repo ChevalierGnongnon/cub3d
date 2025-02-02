@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 10:58:15 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/02/01 16:55:16 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/02/02 13:10:28 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,24 +46,19 @@ static int	check_png_extension(const char *path)
 	return (0);
 }
 
-static mlx_image_t	*get_image(mlx_t *mlx, const char *path)
+static mlx_texture_t	*get_image(const char *path)
 {
 	mlx_texture_t	*texture;
-	mlx_image_t		*image;
 
 	if (!check_png_extension(path))
 		return (NULL);
 	texture = mlx_load_png(path);
 	if (!texture)
 		return (NULL);
-	image = mlx_texture_to_image(mlx, texture);
-	if (!image)
-		return (NULL);
-	mlx_delete_texture(texture);
-	return (image);
+	return (texture);
 }
 
-t_graphics	*get_graphics(mlx_t *mlx, t_data *data)
+t_graphics	*get_graphics(t_data *data)
 {
 	t_graphics	*imgs;
 	int			checker;
@@ -72,10 +67,10 @@ t_graphics	*get_graphics(mlx_t *mlx, t_data *data)
 	imgs = ft_calloc(1, sizeof(t_graphics));
 	if (!imgs)
 		return (NULL);
-	imgs->wall_south = get_image(mlx, data->path_south);
-	imgs->wall_north = get_image(mlx, data->path_north);
-	imgs->wall_east = get_image(mlx, data->path_east);
-	imgs->wall_west = get_image(mlx, data->path_west);
+	imgs->wall_south = get_image(data->path_south);
+	imgs->wall_north = get_image(data->path_north);
+	imgs->wall_east = get_image(data->path_east);
+	imgs->wall_west = get_image(data->path_west);
 	imgs->sky = rgb_convert(data->rgb_sky, &checker);
 	imgs->ground = rgb_convert(data->rgb_ground, &checker);
 	if (!check_graphics(imgs, &checker))

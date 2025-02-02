@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 15:18:35 by chhoflac          #+#    #+#             */
-/*   Updated: 2025/02/01 17:02:38 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/02/02 13:08:56 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,16 @@ void	*free_two_dimentional(const char **map)
 	return (NULL);
 }
 
-void	*free_graphics(mlx_t *mlx, t_graphics *graphics)
+void	*free_graphics(t_graphics *graphics)
 {
 	if (graphics->wall_east)
-		mlx_delete_image(mlx, graphics->wall_east);
+		mlx_delete_texture(graphics->wall_east);
 	if (graphics->wall_south)
-		mlx_delete_image(mlx, graphics->wall_south);
+		mlx_delete_texture(graphics->wall_south);
 	if (graphics->wall_north)
-		mlx_delete_image(mlx, graphics->wall_north);
+		mlx_delete_texture(graphics->wall_north);
 	if (graphics->wall_west)
-		mlx_delete_image(mlx, graphics->wall_west);
+		mlx_delete_texture(graphics->wall_west);
 	return (NULL);
 }
 
@@ -68,7 +68,7 @@ void	*free_all(mlx_t *mlx, t_data *data, t_graphics *graphics)
 	if (data)
 		free_data(data);
 	if (graphics)
-		free_graphics(mlx, graphics);
+		free_graphics(graphics);
 	if (mlx)
 		mlx_terminate(mlx);
 	return (NULL);

@@ -6,7 +6,7 @@
 /*   By: chhoflac <chhoflac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:26:43 by lahlsweh          #+#    #+#             */
-/*   Updated: 2025/02/01 16:46:58 by chhoflac         ###   ########.fr       */
+/*   Updated: 2025/02/02 13:10:49 by chhoflac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@
 
 typedef struct s_graphics
 {
-	mlx_image_t				*wall_south;
-	mlx_image_t				*wall_north;
-	mlx_image_t 			*wall_west;
-	mlx_image_t				*wall_east;
-	unsigned int			ground;
-	unsigned int			sky;
+	mlx_texture_t		*wall_south;
+	mlx_texture_t		*wall_north;
+	mlx_texture_t 		*wall_west;
+	mlx_texture_t		*wall_east;
+	unsigned int		ground;
+	unsigned int		sky;
 }	t_graphics;
 
 typedef struct s_rgb
@@ -52,7 +52,7 @@ typedef struct s_pos
 	int y;
 }	t_pos;
 
-typedef struct s_file
+typedef struct s_data
 {
 	const char	**map;
 	int			player_start_posX;
@@ -64,12 +64,6 @@ typedef struct s_file
 	const char	*rgb_ground;
 	const char	*rgb_sky;
 }	t_data;
-
-typedef struct s_player
-{
-	int	pos_x;
-	int	pos_y;
-}	t_player;
 
 /*
  * PARSING
@@ -91,7 +85,7 @@ int			check_bordline(const char *line);
  * Graphics
  */
 
-t_graphics	*get_graphics(mlx_t *mlx, t_data *data);
+t_graphics	*get_graphics(t_data *data);
 
 /*
  * RGB
@@ -104,7 +98,7 @@ unsigned int 		rgb_convert(const char *srgb, int *checker);
  */
 void		*free_two_dimentional(const char **map);
 void		*free_data(t_data *data);
-void		*free_graphics(mlx_t *mlx, t_graphics *graphics);
+void		*free_graphics(t_graphics *graphics);
 void		*free_all(mlx_t *mlx, t_data *data, t_graphics *graphics);
 
 /*
